@@ -1,17 +1,11 @@
 #ifndef TMP_ELEM_HPP
 #define TMP_ELEM_HPP
-#include"TMP/foldl.hpp"
-#include"TMP/or.hpp"
+#include"TMP/any.hpp"
 namespace tmp
 {
 	template < typename T , typename seq >
 	struct elem
-		: foldl
-		<
-			or_ < std::is_same < T , arg < 1 > > , arg < 0 > > ,
-			bool_ < false > ,
-			seq
-		>
+		: any < std::is_same < T , arg < 0 > > , seq >
 	{
 	} ;
 	namespace detail
