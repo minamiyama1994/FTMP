@@ -4,14 +4,6 @@
 #include"TMP/or.hpp"
 namespace tmp
 {
-	namespace detail
-	{
-		template < typename T , typename Ts >
-		struct eval_elem
-			: elem < typename T::type , typename Ts::type >
-		{
-		} ;
-	}
 	template < typename T , typename seq >
 	struct elem
 		: foldl
