@@ -1,0 +1,3 @@
+#! /bin/sh
+cp test.cpp .listup Makefile /C/Users/Owner/Documents/GitHub/TMP/
+cp include/TMP/*.hpp /C/Users/Owner/Documents/GitHub/TMP/include/TMP/
