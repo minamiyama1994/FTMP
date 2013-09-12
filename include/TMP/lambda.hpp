@@ -1,6 +1,8 @@
 #ifndef TMP_LAMBDA_HPP
 #define TMP_LAMBDA_HPP
 #include<type_traits>
+#include"TMP/id.hpp"
+#include"TMP/list.hpp"
 namespace tmp
 {
 	template < unsigned int index >
@@ -10,11 +12,6 @@ namespace tmp
 	} ;
 	namespace detail
 	{
-		template < typename ... T >
-		struct list
-		{
-			using type = list ;
-		} ;
 		template < typename seq , unsigned int N >
 		struct at ;
 		template < typename T0 , typename ... T , unsigned int N >
@@ -34,17 +31,19 @@ namespace tmp
 			: list < head , tail ... >
 		{
 		} ;
+		template < typename func , typename args >
+		struct apply ;
+		template < typename Ts , typename args >
+		struct apply_helper ;
 		template < typename func , typename list_ >
 		struct apply_impl ;
 		template < template < typename ... T_ > class func_template , typename ... T , typename ... args >
 		struct apply_impl < func_template < T ... > , list < args ... > >
-			: func_template < args ... >
 		{
+			using type = func_template < args ... > ;
 		} ;
-		template < typename Ts , typename args >
-		struct apply_helper ;
 		template < unsigned int N , typename ... Ts , typename args >
-		struct apply_helper < list < tmp::function::arg < N > , Ts ... > , args >
+		struct apply_helper < list < tmp::arg < N > , Ts ... > , args >
 			: cons
 			<
 				typename at < args , N >::type ,
@@ -56,14 +55,9 @@ namespace tmp
 		struct apply_helper < list < T0 , Ts ... > , args >
 			: cons
 			<
-				T0 ,
+				typename apply < T0 , args >::type ,
 				typename apply_helper < list < Ts ... > , args >::type
 			>
-		{
-		} ;
-		template < typename Ts >
-		struct apply_helper < Ts , list < > >
-			: Ts
 		{
 		} ;
 		template < typename args >
@@ -71,8 +65,11 @@ namespace tmp
 			: list < >
 		{
 		} ;
-		template < typename func , typename args >
-		struct apply ;
+		template < typename T , typename args >
+		struct apply
+			: tmp::id < T >
+		{
+		} ;
 		template < template < typename ... T_ > class func_template , typename ... T , typename args >
 		struct apply < func_template < T ... > , args >
 			: apply_impl
@@ -92,11 +89,11 @@ namespace tmp
 	{
 		template < typename ... T >
 		struct apply
-			: tmp::function::detail::apply
+			: tmp::detail::apply
 			<
 				func ,
-				tmp::function::detail::list < T ... > 
-			>
+				list < T ... > 
+			>::type
 		{
 		} ;
 	} ;
@@ -129,12 +126,55 @@ namespace tmp
 		(
 			std::is_same
 			<
+				variadic_func < char , short , int , long , float , double , list < short , float > >::type ,
+				lambda < variadic_func < char , arg < 0 > , int , long , arg < 1 > , double , list < arg < 0 > , arg < 1 > > > >::apply
+				<
+					short ,
+					float
+				>::type
+			>::type::value ,
+			"test of \"lambda\" failed."
+		) ;
+		static_assert
+		(
+			std::is_same
+			<
+				variadic_func < char , short , int , long , float , double >::type ,
+				lambda < variadic_func < char , short , int , long , float , double > >::apply < >::type
+			>::type::value ,
+			"test of \"lambda\" failed."
+		) ;
+		static_assert
+		(
+			std::is_same
+			<
 				func < char , short , int , long , float , double >::type ,
 				lambda < func < char , arg < 0 > , int , long , arg < 1 > , double > >::apply
 				<
 					short ,
 					float
 				>::type
+			>::type::value ,
+			"test of \"lambda\" failed."
+		) ;
+		static_assert
+		(
+			std::is_same
+			<
+				variadic_func < char , short , int , long , float , double >::type ,
+				lambda < variadic_func < arg < 0 > , arg < 1 > , arg < 2 > , arg < 3 > , arg < 4 > , arg < 5 > > >::apply
+				<
+					char , short , int , long , float , double
+				>::type
+			>::type::value ,
+			"test of \"lambda\" failed."
+		) ;
+		static_assert
+		(
+			std::is_same
+			<
+				variadic_func < >::type ,
+				lambda < variadic_func < > >::apply < >::type
 			>::type::value ,
 			"test of \"lambda\" failed."
 		) ;

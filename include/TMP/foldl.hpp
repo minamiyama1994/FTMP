@@ -16,7 +16,7 @@ namespace tmp
 		: foldl
 		<
 			func ,
-			typename tmp::function::lambda < func >::template apply
+			typename tmp::lambda < func >::template apply
 			<
 				a ,
 				b0
