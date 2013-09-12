@@ -27,21 +27,5 @@ namespace tmp
 		>
 	{
 	} ;
-	namespace detail
-	{
-		static_assert
-		(
-			std::is_same
-			<
-				list < char , short , int , long , float , double > ,
-				typename map
-				<
-					tmp::id < tmp::arg < 0 > > ,
-					list < char , short , int , long , float , double >
-				>::type
-			>::type::value ,
-			"test of \"map\" failed."
-		) ;
-	}
 }
 #endif

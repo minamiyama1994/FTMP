@@ -28,21 +28,5 @@ namespace tmp
 		>
 	{
 	} ;
-	namespace detail
-	{
-		static_assert
-		(
-			std::is_same
-			<
-				list < double , double , double , double , double > ,
-				typename filter
-				<
-					std::is_same < double , arg < 0 > > ,
-					list < double , double , int , double , double , double >
-				>::type
-			>::type::value ,
-			"test of \"filter\" failed."
-		) ;
-	}
 }
 #endif

@@ -15,21 +15,5 @@ namespace tmp
 		>
 	{
 	} ;
-	namespace detail
-	{
-		static_assert
-		(
-			std::is_same
-			<
-				list < char , short , int , long , float , double > ,
-				typename concat
-				<
-					list < char , short , int > ,
-					list < long , float , double >
-				>::type
-			>::type::value ,
-			"test of \"concat\" failed."
-		) ;
-	}
 }
 #endif

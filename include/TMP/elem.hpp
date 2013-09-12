@@ -8,26 +8,5 @@ namespace tmp
 		: any < std::is_same < T , arg < 0 > > , seq >
 	{
 	} ;
-	namespace detail
-	{
-		static_assert
-		(
-			elem
-			<
-				int ,
-				list < char , short , int , long , float , double >
-			>::type::value ,
-			"test of \"concat\" failed."
-		) ;
-		static_assert
-		(
-			! elem
-			<
-				unsigned char ,
-				list < char , short , int , long , float , double >
-			>::type::value ,
-			"test of \"elem\" failed."
-		) ;
-	}
 }
 #endif
