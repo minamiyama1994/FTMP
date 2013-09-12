@@ -20,7 +20,7 @@ namespace tmp
 		(
 			elem
 			<
-				int
+				int ,
 				list < char , short , int , long , float , double >
 			>::type::value ,
 			"test of \"concat\" failed."
@@ -29,10 +29,10 @@ namespace tmp
 		(
 			! elem
 			<
-				unsigned char
+				unsigned char ,
 				list < char , short , int , long , float , double >
 			>::type::value ,
-			"test of \"concat\" failed."
+			"test of \"elem\" failed."
 		) ;
 	}
 }

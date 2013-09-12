@@ -1,10 +1,11 @@
 #ifndef TMP_OR_HPP
 #define TMP_OR_HPP
+#include"TMP/not.hpp"
 namespace tmp
 {
-	template < typename T1 , typename T1 >
+	template < typename T1 , typename T2 >
 	struct or_
-		: bool_ < T1::type::value || T2::type::value >
+		: nand < not_ < T1 > , not_ < T2 > >
 	{
 	} ;
 }

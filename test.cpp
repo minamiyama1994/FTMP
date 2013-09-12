@@ -11,6 +11,14 @@
 #include"TMP/id.hpp"
 #include"TMP/concat.hpp"
 #include"TMP/filter.hpp"
+#include"TMP/unique.hpp"
+#include"TMP/elem.hpp"
+#include"TMP/bool.hpp"
+#include"TMP/or.hpp"
+#include"TMP/and.hpp"
+#include"TMP/nand.hpp"
+#include"TMP/xor.hpp"
+#include"TMP/not.hpp"
 auto main ( ) -> int
 {
 }

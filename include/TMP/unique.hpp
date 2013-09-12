@@ -4,21 +4,13 @@
 #include"TMP/elem.hpp"
 namespace tmp
 {
-	namespace detail
-	{
-		template < typename T , typename Ts >
-		struct eval_elem
-			: elem < typename T::type , typename Ts::type >
-		{
-		} ;
-	}
 	template < typename seq >
 	struct unique
 		: foldr
 		<
 			eval_if
 			<
-				tmp::detail::eval_elem < arg < 0 > , arg < 1 > > ,
+				elem < arg < 0 > , arg < 1 > > ,
 				id < arg < 1 > > ,
 				cons < arg < 0 > , arg < 1 > >
 			> ,
