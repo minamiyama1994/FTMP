@@ -33,11 +33,11 @@ namespace tmp
 		(
 			std::is_same
 			<
-				variadic_func < char , short , int , long , float , double >::type ,
+				list < char , short , int , long , float , double > ,
 				typename map
 				<
 					tmp::id < tmp::arg < 0 > > ,
-					variadic_func < char , short , int , long , float , double >::type
+					list < char , short , int , long , float , double >
 				>::type
 			>::type::value ,
 			"test of \"map\" failed."

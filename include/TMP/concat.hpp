@@ -1,18 +1,14 @@
 #ifndef TMP_CONCAT_HPP
 #define TMP_CONCAT_HPP
 #include"TMP/foldr.hpp"
+#include"TMP/cons.hpp"
 namespace tmp
 {
 	template < typename seq1 , typename seq2 >
 	struct concat
 		: foldr
 		<
-			tmp::detail::eval_cons
-			<
-				typename lambda < func >::template apply < arg < 0 > > ,
-				id < arg < 1 > >
-			> ,
-			list < > ,
+			cons < arg < 0 > , arg < 1 > > ,
 			seq2 ,
 			seq1
 			
@@ -25,7 +21,7 @@ namespace tmp
 		(
 			std::is_same
 			<
-				variadic_func < char , short , int , long , float , double >::type ,
+				list < char , short , int , long , float , double > ,
 				typename concat
 				<
 					list < char , short , int > ,
