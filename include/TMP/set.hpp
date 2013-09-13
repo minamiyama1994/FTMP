@@ -8,7 +8,6 @@ namespace tmp
 #include"TMP/all.hpp"
 #include"TMP/elem.hpp"
 #include"TMP/equal.hpp"
-#include"TMP/size.hpp"
 #include"TMP/set_to_list.hpp"
 namespace tmp
 {
@@ -50,11 +49,6 @@ namespace tmp
 			integral < bool , true > ,
 			typename set_to_list < set < T1 ... > >::type
 		>
-	{
-	} ;
-	template < typename ... T >
-	struct size < set < T ... > >
-		: size < set_to_list < set < T ... > > >
 	{
 	} ;
 }

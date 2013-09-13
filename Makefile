@@ -6,4 +6,4 @@ test_:
 	echo $< | sed -e s'/^include\//#include"/' | sed -e s'/$$/"/' > $*.cpp
 	echo "auto main ( ) -> int { }" >> $*.cpp
 	g++ -g -I/local/include/boost-1_54/ -I./include/ -DBOOST_RESULT_OF_USE_DECLTYPE -Wall -Wextra -Werror --save-temps -std=c++11 $*.cpp -o $*
-	rm -rfv $*.cpp $*.ii $*.s $*.o $*.exe
+	rm -rfv $*.*
