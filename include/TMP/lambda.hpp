@@ -1,8 +1,8 @@
 #ifndef TMP_LAMBDA_HPP
 #define TMP_LAMBDA_HPP
-#include<type_traits>
+#include"TMP/cons.hpp"
+#include"TMP/at.hpp"
 #include"TMP/id.hpp"
-#include"TMP/list.hpp"
 namespace tmp
 {
 	template < unsigned int index >
@@ -12,25 +12,6 @@ namespace tmp
 	} ;
 	namespace detail
 	{
-		template < typename seq , unsigned int N >
-		struct at ;
-		template < typename T0 , typename ... T , unsigned int N >
-		struct at < list < T0 , T ... > , N >
-			: at < list < T ... > , N - 1 >
-		{
-		} ;
-		template < typename T0 , typename ... T >
-		struct at < list < T0 , T ... > , 0 >
-		{
-			using type = T0 ;
-		} ;
-		template < typename head , typename tail >
-		struct cons ;
-		template < typename head , typename ... tail >
-		struct cons < head , list < tail ... > >
-			: list < head , tail ... >
-		{
-		} ;
 		template < typename func , typename args >
 		struct apply ;
 		template < typename Ts , typename args >
@@ -38,31 +19,31 @@ namespace tmp
 		template < typename func , typename list_ >
 		struct apply_impl ;
 		template < template < typename ... T_ > class func_template , typename ... T , typename ... args >
-		struct apply_impl < func_template < T ... > , list < args ... > >
+		struct apply_impl < func_template < T ... > , tmp::list < args ... > >
 		{
 			using type = func_template < args ... > ;
 		} ;
 		template < unsigned int N , typename ... Ts , typename args >
-		struct apply_helper < list < tmp::arg < N > , Ts ... > , args >
+		struct apply_helper < tmp::list < tmp::arg < N > , Ts ... > , args >
 			: cons
 			<
-				typename at < args , N >::type ,
-				typename apply_helper < list < Ts ... > , args >::type
+				typename tmp::at < args , integral < unsigned int , N > >::type ,
+				typename apply_helper < tmp::list < Ts ... > , args >::type
 			>
 		{
 		} ;
-		template < typename T0 , typename ... Ts , typename args >
-		struct apply_helper < list < T0 , Ts ... > , args >
-			: cons
+		template < typename T , typename args >
+		struct apply_helper
+			: tmp::cons
 			<
-				typename apply < T0 , args >::type ,
-				typename apply_helper < list < Ts ... > , args >::type
+				typename apply < typename head < T >::type , args >::type ,
+				typename apply_helper < typename tail < T >::type , args >::type
 			>
 		{
 		} ;
 		template < typename args >
-		struct apply_helper < list < > , args >
-			: list < >
+		struct apply_helper < tmp::list < > , args >
+			: tmp::list < >
 		{
 		} ;
 		template < typename T , typename args >
@@ -77,7 +58,7 @@ namespace tmp
 				func_template < T ... > ,
 				typename apply_helper
 				<
-					list < T ... > ,
+					tmp::list < T ... > ,
 					args
 				>::type
 			>

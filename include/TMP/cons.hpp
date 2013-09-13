@@ -1,6 +1,7 @@
 #ifndef TMP_CONS_HPP
 #define TMP_CONS_HPP
-#include"TMP/list.hpp"
+#include"TMP/head.hpp"
+#include"TMP/tail.hpp"
 namespace tmp
 {
 	template < typename head , typename tail >

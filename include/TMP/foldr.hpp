@@ -1,6 +1,5 @@
 #ifndef TMP_FOLDR_HPP
 #define TMP_FOLDR_HPP
-#include"TMP/list.hpp"
 #include"TMP/lambda.hpp"
 namespace tmp
 {
@@ -11,16 +10,16 @@ namespace tmp
 	{
 		using type = b ;
 	} ;
-	template < typename func , typename b , typename a0 , typename ... a >
-	struct foldr < func , b , list < a0 , a ... > >
+	template < typename func , typename b , typename as >
+	struct foldr
 		: tmp::lambda < func >::template apply
 		<
-			a0 ,
+			typename head < as >::type ,
 			typename foldr
 			<
 				func ,
 				b ,
-				list < a ... >
+				typename tail < as >::type
 			>::type
 		>
 	{

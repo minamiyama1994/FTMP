@@ -11,29 +11,8 @@ namespace tmp
 			append < arg < 0 > , arg < 1 > > ,
 			list < > ,
 			seq
-			
 		>
 	{
 	} ;
-	namespace detail
-	{
-		static_assert
-		(
-			std::is_same
-			<
-				list < char , short , int , long , float , double > ,
-				concat
-				<
-					list
-					<
-						list < char > ,
-						list < short , int > ,
-						list < long , float , double >
-					>
-				>::type
-			>::type::value ,
-			""
-		) ;
-	}
 }
 #endif

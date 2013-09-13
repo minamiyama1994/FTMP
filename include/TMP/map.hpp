@@ -1,8 +1,6 @@
 #ifndef TMP_MAP_HPP
 #define TMP_MAP_HPP
 #include"TMP/foldr.hpp"
-#include"TMP/cons.hpp"
-#include"TMP/id.hpp"
 namespace tmp
 {
 	namespace detail

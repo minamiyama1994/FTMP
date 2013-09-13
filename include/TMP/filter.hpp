@@ -1,7 +1,6 @@
 #ifndef TMP_FILTER_HPP
 #define TMP_FILTER_HPP
 #include"TMP/foldr.hpp"
-#include"TMP/cons.hpp"
 #include"TMP/eval_if.hpp"
 namespace tmp
 {

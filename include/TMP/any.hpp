@@ -9,7 +9,7 @@ namespace tmp
 		: foldl
 		<
 			or_ < typename lambda < func >::template apply < arg < 1 > > , arg < 0 > > ,
-			bool_ < false > ,
+			integral < bool , false > ,
 			seq
 		>
 	{

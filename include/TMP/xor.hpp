@@ -1,7 +1,7 @@
 #ifndef TMP_XOR_HPP
 #define TMP_XOR_HPP
-#include"TMP/and.hpp"
 #include"TMP/or.hpp"
+#include"TMP/and.hpp"
 namespace tmp
 {
 	template < typename T1 , typename T2 >
