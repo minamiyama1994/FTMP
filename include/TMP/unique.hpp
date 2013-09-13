@@ -1,7 +1,8 @@
 #ifndef TMP_UNIQUE_HPP
 #define TMP_UNIQUE_HPP
-#include"TMP/elem.hpp"
 #include"TMP/foldr.hpp"
+#include"TMP/elem.hpp"
+#include"TMP/eval_if.hpp"
 namespace tmp
 {
 	template < typename seq >
