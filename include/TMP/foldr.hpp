@@ -1,10 +1,13 @@
 #ifndef TMP_FOLDR_HPP
 #define TMP_FOLDR_HPP
-#include"TMP/lambda.hpp"
 namespace tmp
 {
 	template < typename func , typename b , typename as >
 	struct foldr ;
+}
+#include"TMP/lambda.hpp"
+namespace tmp
+{
 	template < typename func , typename b >
 	struct foldr < func , b , list < > >
 	{

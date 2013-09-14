@@ -1,10 +1,14 @@
 #ifndef TMP_FOLDL_HPP
 #define TMP_FOLDL_HPP
-#include"TMP/lambda.hpp"
 namespace tmp
 {
 	template < typename func , typename a , typename bs >
 	struct foldl ;
+}
+#include"TMP/lambda.hpp"
+#include"TMP/tail.hpp"
+namespace tmp
+{
 	template < typename func , typename a >
 	struct foldl < func , a , list < > >
 	{

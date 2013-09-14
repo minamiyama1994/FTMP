@@ -1,5 +1,10 @@
 #ifndef TMP_UNIQUE_HPP
 #define TMP_UNIQUE_HPP
+namespace tmp
+{
+	template < typename seq >
+	struct unique ;
+}
 #include"TMP/foldr.hpp"
 #include"TMP/elem.hpp"
 #include"TMP/eval_if.hpp"

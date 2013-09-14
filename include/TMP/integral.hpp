@@ -3,6 +3,11 @@
 namespace tmp
 {
 	template < typename T , T val >
+	struct integral ;
+}
+namespace tmp
+{
+	template < typename T , T val >
 	struct integral
 	{
 		using type = integral ;

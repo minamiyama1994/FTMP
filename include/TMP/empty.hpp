@@ -1,5 +1,10 @@
 #ifndef TMP_EMPTY_HPP
 #define TMP_EMPTY_HPP
+namespace tmp
+{
+	template < typename T >
+	struct empty ;
+}
 #include"TMP/foldl.hpp"
 #include"TMP/and.hpp"
 namespace tmp

@@ -1,8 +1,16 @@
 #ifndef TMP_LAMBDA_HPP
 #define TMP_LAMBDA_HPP
-#include"TMP/cons.hpp"
+namespace tmp
+{
+	template < typename func >
+	struct lambda ;
+	template < unsigned int index >
+	struct arg ;
+}
 #include"TMP/at.hpp"
+#include"TMP/cons.hpp"
 #include"TMP/id.hpp"
+#include"TMP/integral.hpp"
 namespace tmp
 {
 	template < unsigned int index >
@@ -12,6 +20,11 @@ namespace tmp
 	} ;
 	namespace detail
 	{
+		template < typename T , unsigned int N >
+		struct at
+			: tmp::at < T , tmp::integral < unsigned int , N > >
+		{
+		} ;
 		template < typename func , typename args >
 		struct apply ;
 		template < typename Ts , typename args >
@@ -27,7 +40,7 @@ namespace tmp
 		struct apply_helper < tmp::list < tmp::arg < N > , Ts ... > , args >
 			: cons
 			<
-				typename tmp::at < args , integral < unsigned int , N > >::type ,
+				typename at < args , N >::type ,
 				typename apply_helper < tmp::list < Ts ... > , args >::type
 			>
 		{
@@ -43,8 +56,8 @@ namespace tmp
 		} ;
 		template < typename args >
 		struct apply_helper < tmp::list < > , args >
-			: tmp::list < >
 		{
+			using type = tmp::list < > ;
 		} ;
 		template < typename T , typename args >
 		struct apply

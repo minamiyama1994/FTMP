@@ -1,6 +1,12 @@
 #ifndef TMP_ZIP_HPP
 #define TMP_ZIP_HPP
+namespace tmp
+{
+	template < typename ... T >
+	struct zip ;
+}
 #include"TMP/any.hpp"
+#include"TMP/cons.hpp"
 #include"TMP/eval_if.hpp"
 #include"TMP/empty.hpp"
 namespace tmp

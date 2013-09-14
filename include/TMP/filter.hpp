@@ -1,5 +1,10 @@
 #ifndef TMP_FILTER_HPP
 #define TMP_FILTER_HPP
+namespace tmp
+{
+	template < typename func , typename seq >
+	struct filter ;
+}
 #include"TMP/foldr.hpp"
 #include"TMP/eval_if.hpp"
 namespace tmp

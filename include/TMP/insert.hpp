@@ -1,5 +1,10 @@
 #ifndef TMP_INSERT_HPP
 #define TMP_INSERT_HPP
+namespace tmp
+{
+	template < typename set , typename T >
+	struct insert ;
+}
 #include"TMP/list_to_set.hpp"
 namespace tmp
 {

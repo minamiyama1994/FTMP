@@ -1,5 +1,10 @@
 #ifndef TMP_OR_HPP
 #define TMP_OR_HPP
+namespace tmp
+{
+	template < typename T1 , typename T2 >
+	struct or_ ;
+}
 #include"TMP/not.hpp"
 namespace tmp
 {

@@ -1,5 +1,10 @@
 #ifndef TMP_ALL_HPP
 #define TMP_ALL_HPP
+namespace tmp
+{
+	template < typename func , typename seq >
+	struct all ;
+}
 #include"TMP/foldl.hpp"
 #include"TMP/and.hpp"
 namespace tmp

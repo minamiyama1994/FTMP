@@ -1,5 +1,10 @@
 #ifndef TMP_CONCAT_HPP
 #define TMP_CONCAT_HPP
+namespace tmp
+{
+	template < typename seq >
+	struct concat ;
+}
 #include"TMP/foldr.hpp"
 #include"TMP/append.hpp"
 namespace tmp

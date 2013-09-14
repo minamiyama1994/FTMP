@@ -1,5 +1,10 @@
 #ifndef TMP_NAND_HPP
 #define TMP_NAND_HPP
+namespace tmp
+{
+	template < typename T1 , typename T2 >
+	struct nand ;
+}
 #include"TMP/integral.hpp"
 namespace tmp
 {

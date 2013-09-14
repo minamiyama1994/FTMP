@@ -1,20 +1,33 @@
 #ifndef TMP_AT_HPP
 #define TMP_AT_HPP
+namespace tmp
+{
+	template < typename T , typename index_type >
+	struct at ;
+}
 #include"TMP/head.hpp"
 #include"TMP/tail.hpp"
 #include"TMP/integral.hpp"
 namespace tmp
 {
-	template < typename T , typename index >
-	struct at ;
+	namespace detail
+	{
+		template < typename T , unsigned index >
+		struct at_helper ;
+		template < typename T , unsigned index >
+		struct at_helper
+			: at_helper < typename tail < T >::type , index - 1 >
+		{
+		} ;
+		template < typename T >
+		struct at_helper < T , 0 >
+			: head < T >
+		{
+		} ;
+	}
 	template < typename T , typename index_type , index_type index >
 	struct at < T , integral < index_type , index > >
-		: at < typename tail < T >::type , integral < index_type , index - 1 > >
-	{
-	} ;
-	template < typename T , typename index_type >
-	struct at < T , integral < index_type , 0 > >
-		: head < T >
+		: tmp::detail::at_helper < T , index >
 	{
 	} ;
 }

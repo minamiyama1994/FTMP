@@ -4,6 +4,9 @@ namespace tmp
 {
 	template < bool tf , typename T1 , typename T2 >
 	struct if_c ;
+}
+namespace tmp
+{
 	template < typename T1 , typename T2 >
 	struct if_c < true , T1 , T2 >
 	{

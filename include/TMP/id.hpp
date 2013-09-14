@@ -3,6 +3,11 @@
 namespace tmp
 {
 	template < typename T >
+	struct id ;
+}
+namespace tmp
+{
+	template < typename T >
 	struct id
 	{
 		using type = T ;
