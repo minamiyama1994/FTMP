@@ -9,14 +9,14 @@ namespace tmp
 #include"TMP/and.hpp"
 namespace tmp
 {
-	template < typename T >
-	struct empty
-		: foldl
-		<
-			and_ < integral < bool , false > , arg < 0 > > ,
-			integral < bool , true > ,
-			T
-		>
+	template < typename ... T >
+	struct empty < list < T ... > >
+		: integral < bool , false >
+	{
+	} ;
+	template < >
+	struct empty < list < > >
+		: integral < bool , true >
 	{
 	} ;
 }
