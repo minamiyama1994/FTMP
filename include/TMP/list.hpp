@@ -25,6 +25,11 @@ namespace tmp
 	{
 		using type = list ;
 	} ;
+	template < typename ... T1 >
+	struct equal < list < T1 ... > , list < T1 ... > >
+		: integral < bool , true >
+	{
+	} ;
 	template < typename ... T1 , typename ... T2 >
 	struct equal < list < T1 ... > , list < T2 ... > >
 		: and_
@@ -34,7 +39,7 @@ namespace tmp
 				bool ,
 				size < list < T1 ... > >::type::value == size < list < T2 ... > >::type::value
 			> ,
-			all
+			typename all
 			<
 				tmp::detail::eval_equal
 				<
@@ -42,7 +47,7 @@ namespace tmp
 					at < arg < 0 > , integral < int , 1 > >
 				> ,
 				typename zip < list < T1 ... > , list < T2 ... > >::type
-			>
+			>::type
 		>
 	{
 	} ;

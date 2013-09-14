@@ -16,6 +16,11 @@ namespace tmp
 	{
 		using type = set ;
 	} ;
+	template < typename ... T1 >
+	struct equal < set < T1 ... > , set < T1 ... > >
+		: integral < bool , true >
+	{
+	} ;
 	template < typename ... T1 , typename ... T2 >
 	struct equal < set < T1 ... > , set < T2 ... > >
 		: and_
