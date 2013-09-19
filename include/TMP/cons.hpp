@@ -5,8 +5,7 @@ namespace tmp
 	template < typename head , typename tail >
 	struct cons ;
 }
-#include"TMP/head.hpp"
-#include"TMP/tail.hpp"
+#include"TMP/list.hpp"
 namespace tmp
 {
 	template < typename head , typename ... tail >

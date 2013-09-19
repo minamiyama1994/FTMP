@@ -11,6 +11,7 @@ namespace tmp
 #include"TMP/cons.hpp"
 #include"TMP/id.hpp"
 #include"TMP/integral.hpp"
+#include"TMP/tail.hpp"
 namespace tmp
 {
 	template < unsigned int index >

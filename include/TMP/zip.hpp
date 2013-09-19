@@ -9,13 +9,18 @@ namespace tmp
 #include"TMP/cons.hpp"
 #include"TMP/eval_if.hpp"
 #include"TMP/empty.hpp"
+#include"TMP/tail.hpp"
 namespace tmp
 {
 	namespace detail
 	{
 		template < typename ... T >
 		struct variadic_cons
-			: tmp::cons < list < typename head < T >::type ... > , typename zip < typename tail < T >::type ... >::type >
+			: tmp::cons
+			<
+				list < typename head < T >::type ... > ,
+				typename zip < typename tail < T >::type ... >::type
+			>
 		{
 		} ;
 	}
