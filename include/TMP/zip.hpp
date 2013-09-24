@@ -6,9 +6,10 @@ namespace tmp
 	struct zip ;
 }
 #include"TMP/any.hpp"
-#include"TMP/cons.hpp"
-#include"TMP/eval_if.hpp"
 #include"TMP/empty.hpp"
+#include"TMP/eval_if.hpp"
+#include"TMP/head.hpp"
+#include"TMP/list.hpp"
 #include"TMP/tail.hpp"
 namespace tmp
 {

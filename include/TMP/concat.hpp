@@ -5,8 +5,9 @@ namespace tmp
 	template < typename seq >
 	struct concat ;
 }
-#include"TMP/foldr.hpp"
 #include"TMP/append.hpp"
+#include"TMP/foldr.hpp"
+#include"TMP/list.hpp"
 namespace tmp
 {
 	template < typename seq >

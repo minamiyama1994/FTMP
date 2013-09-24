@@ -6,8 +6,8 @@ namespace tmp
 	struct at ;
 }
 #include"TMP/head.hpp"
-#include"TMP/tail.hpp"
 #include"TMP/integral.hpp"
+#include"TMP/tail.hpp"
 namespace tmp
 {
 	namespace detail

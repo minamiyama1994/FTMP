@@ -6,6 +6,7 @@ namespace tmp
 	struct symmetric_difference ;
 }
 #include"TMP/complement.hpp"
+#include"TMP/set.hpp"
 #include"TMP/union.hpp"
 namespace tmp
 {

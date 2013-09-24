@@ -5,7 +5,15 @@ namespace tmp
 	template < typename seq >
 	struct unique ;
 }
+#include"TMP/cons.hpp"
+#include"TMP/equal.hpp"
+#include"TMP/eval.hpp"
 #include"TMP/filter.hpp"
+#include"TMP/foldr.hpp"
+#include"TMP/id.hpp"
+#include"TMP/list.hpp"
+#include"TMP/not.hpp"
+#include"TMP/unique.hpp"
 namespace tmp
 {
 	namespace detail

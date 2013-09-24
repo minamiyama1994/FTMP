@@ -5,8 +5,9 @@ namespace tmp
 	template < typename T1 , typename T2 >
 	struct xor_ ;
 }
-#include"TMP/or.hpp"
 #include"TMP/and.hpp"
+#include"TMP/nand.hpp"
+#include"TMP/or.hpp"
 namespace tmp
 {
 	template < typename T1 , typename T2 >

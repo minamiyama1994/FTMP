@@ -6,6 +6,9 @@ namespace tmp
 	struct init ;
 }
 #include"TMP/cons.hpp"
+#include"TMP/head.hpp"
+#include"TMP/list.hpp"
+#include"TMP/tail.hpp"
 namespace tmp
 {
 	template < typename T >

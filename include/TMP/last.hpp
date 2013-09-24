@@ -5,6 +5,8 @@ namespace tmp
 	template < typename T >
 	struct last ;
 }
+#include"TMP/id.hpp"
+#include"TMP/list.hpp"
 #include"TMP/tail.hpp"
 namespace tmp
 {

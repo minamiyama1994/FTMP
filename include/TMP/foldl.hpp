@@ -5,7 +5,9 @@ namespace tmp
 	template < typename func , typename a , typename bs >
 	struct foldl ;
 }
+#include"TMP/head.hpp"
 #include"TMP/lambda.hpp"
+#include"TMP/list.hpp"
 #include"TMP/tail.hpp"
 namespace tmp
 {
@@ -19,7 +21,7 @@ namespace tmp
 		: foldl
 		<
 			func ,
-			typename tmp::lambda < func >::template apply
+			typename lambda < func >::template apply
 			<
 				a ,
 				typename head < bs >::type

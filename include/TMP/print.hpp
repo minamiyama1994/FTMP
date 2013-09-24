@@ -10,7 +10,7 @@ namespace tmp
 {
 	template < typename T >
 	struct print
-		: tmp::id < T >
+		: id < T >
 	{
 		enum
 		{

@@ -5,6 +5,7 @@ namespace tmp
 	template < typename T1 , typename T2 >
 	struct and_ ;
 }
+#include"TMP/nand.hpp"
 #include"TMP/not.hpp"
 namespace tmp
 {

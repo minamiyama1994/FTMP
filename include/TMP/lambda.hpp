@@ -9,8 +9,9 @@ namespace tmp
 }
 #include"TMP/at.hpp"
 #include"TMP/cons.hpp"
+#include"TMP/head.hpp"
 #include"TMP/id.hpp"
-#include"TMP/integral.hpp"
+#include"TMP/list.hpp"
 #include"TMP/tail.hpp"
 namespace tmp
 {

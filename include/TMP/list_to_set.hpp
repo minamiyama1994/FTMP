@@ -5,6 +5,8 @@ namespace tmp
 	template < typename T >
 	struct list_to_set ;
 }
+#include"TMP/list.hpp"
+#include"TMP/list_to_set.hpp"
 #include"TMP/set.hpp"
 #include"TMP/unique.hpp"
 namespace tmp

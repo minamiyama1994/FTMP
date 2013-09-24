@@ -6,7 +6,11 @@ namespace tmp
 	struct any ;
 }
 #include"TMP/foldl.hpp"
+#include"TMP/integral.hpp"
+#include"TMP/lambda.hpp"
 #include"TMP/or.hpp"
+#include"TMP/set.hpp"
+#include"TMP/set_to_list.hpp"
 namespace tmp
 {
 	template < typename func , typename seq >
@@ -16,6 +20,15 @@ namespace tmp
 			or_ < arg < 0 > , typename lambda < func >::template apply < arg < 1 > > > ,
 			integral < bool , false > ,
 			seq
+		>
+	{
+	} ;
+	template < typename func , typename ... seq >
+	struct any < func , set < seq ... > >
+		: any
+		<
+			func ,
+			typename set_to_list < set < seq ... > >::type
 		>
 	{
 	} ;

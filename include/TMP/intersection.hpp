@@ -5,7 +5,15 @@ namespace tmp
 	template < typename T1 , typename T2 >
 	struct intersection ;
 }
+#include"TMP/cons.hpp"
+#include"TMP/elem.hpp"
+#include"TMP/eval_if.hpp"
+#include"TMP/foldr.hpp"
+#include"TMP/id.hpp"
+#include"TMP/list.hpp"
 #include"TMP/list_to_set.hpp"
+#include"TMP/set.hpp"
+#include"TMP/set_to_list.hpp"
 namespace tmp
 {
 	template < typename ... T1 , typename ... T2 >

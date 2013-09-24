@@ -5,7 +5,10 @@ namespace tmp
 	template < typename func , typename b , typename as >
 	struct foldr ;
 }
+#include"TMP/head.hpp"
 #include"TMP/lambda.hpp"
+#include"TMP/list.hpp"
+#include"TMP/tail.hpp"
 namespace tmp
 {
 	template < typename func , typename b >
@@ -15,7 +18,7 @@ namespace tmp
 	} ;
 	template < typename func , typename b , typename as >
 	struct foldr
-		: tmp::lambda < func >::template apply
+		: lambda < func >::template apply
 		<
 			typename head < as >::type ,
 			typename foldr

@@ -5,8 +5,16 @@ namespace tmp
 	template < typename func , typename seq >
 	struct filter ;
 }
-#include"TMP/foldr.hpp"
+#include"TMP/cons.hpp"
 #include"TMP/eval_if.hpp"
+#include"TMP/filter.hpp"
+#include"TMP/foldr.hpp"
+#include"TMP/id.hpp"
+#include"TMP/lambda.hpp"
+#include"TMP/list.hpp"
+#include"TMP/list_to_set.hpp"
+#include"TMP/set.hpp"
+#include"TMP/set_to_list.hpp"
 namespace tmp
 {
 	namespace detail
@@ -29,6 +37,18 @@ namespace tmp
 			> ,
 			list < > ,
 			seq
+		>
+	{
+	} ;
+	template < typename func , typename ... seq >
+	struct filter < func , set < seq ... > >
+		: list_to_set
+		<
+			typename filter
+			<
+				func ,
+				typename set_to_list < set < seq ... > >::type
+			>::type
 		>
 	{
 	} ;

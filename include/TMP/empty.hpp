@@ -5,8 +5,10 @@ namespace tmp
 	template < typename T >
 	struct empty ;
 }
-#include"TMP/foldl.hpp"
-#include"TMP/and.hpp"
+#include"TMP/integral.hpp"
+#include"TMP/list.hpp"
+#include"TMP/set.hpp"
+#include"TMP/set_to_list.hpp"
 namespace tmp
 {
 	template < typename ... T >
@@ -17,6 +19,14 @@ namespace tmp
 	template < >
 	struct empty < list < > >
 		: integral < bool , true >
+	{
+	} ;
+	template < typename ... seq >
+	struct empty < set < seq ... > >
+		: empty
+		<
+			typename set_to_list < set < seq ... > >::type
+		>
 	{
 	} ;
 }

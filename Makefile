@@ -7,3 +7,5 @@ test_:
 	echo "auto main ( ) -> int { }" >> $*.cpp
 	g++ -g -I./include/ -DBOOST_RESULT_OF_USE_DECLTYPE -Wall -Wextra -Werror --save-temps -std=c++11 $*.cpp -o $*
 	rm -rfv $*.*
+%.include_header:include/TMP/%.hpp
+	( for word in $$( cat $< ) ; do echo $$word; done ) | sort | uniq.exe | grep '^[a-z_]*$$' | sed -e s'/^/#include"TMP\//' | sed -e s'/$$/\.hpp"/'

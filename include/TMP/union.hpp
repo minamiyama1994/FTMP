@@ -5,7 +5,9 @@ namespace tmp
 	template < typename T1 , typename T2 >
 	struct union_ ;
 }
+#include"TMP/list.hpp"
 #include"TMP/list_to_set.hpp"
+#include"TMP/set.hpp"
 namespace tmp
 {
 	template < typename ... T1 , typename ... T2 >
