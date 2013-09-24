@@ -5,17 +5,4 @@ namespace tmp
 	template < typename T >
 	struct print ;
 }
-#include"TMP/id.hpp"
-namespace tmp
-{
-	template < typename T >
-	struct print
-		: id < T >
-	{
-		enum
-		{
-			n = sizeof ( T ) > -1
-		} ; 
-	} ;
-}
 #endif
