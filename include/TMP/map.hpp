@@ -11,9 +11,9 @@ namespace tmp
 #include"TMP/id.hpp"
 #include"TMP/lambda.hpp"
 #include"TMP/list.hpp"
-#include"TMP/list_to_set.hpp"
+#include"TMP/to_set.hpp"
 #include"TMP/set.hpp"
-#include"TMP/set_to_list.hpp"
+#include"TMP/to_list.hpp"
 namespace tmp
 {
 	template < typename func , typename seq >
@@ -35,12 +35,12 @@ namespace tmp
 	} ;
 	template < typename func , typename ... seq >
 	struct map < func , set < seq ... > >
-		: list_to_set
+		: to_set
 		<
 			typename map
 			<
 				func ,
-				typename set_to_list < set < seq ... > >::type
+				typename to_list < set < seq ... > >::type
 			>::type
 		>
 	{

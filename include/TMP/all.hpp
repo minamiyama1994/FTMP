@@ -10,7 +10,7 @@ namespace tmp
 #include"TMP/integral.hpp"
 #include"TMP/lambda.hpp"
 #include"TMP/set.hpp"
-#include"TMP/set_to_list.hpp"
+#include"TMP/to_list.hpp"
 namespace tmp
 {
 	template < typename func , typename seq >
@@ -28,7 +28,7 @@ namespace tmp
 		: all
 		<
 			func ,
-			typename set_to_list < set < seq ... > >::type
+			typename to_list < set < seq ... > >::type
 		>
 	{
 	} ;

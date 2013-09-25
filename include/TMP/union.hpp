@@ -6,13 +6,13 @@ namespace tmp
 	struct union_ ;
 }
 #include"TMP/list.hpp"
-#include"TMP/list_to_set.hpp"
+#include"TMP/to_set.hpp"
 #include"TMP/set.hpp"
 namespace tmp
 {
 	template < typename ... T1 , typename ... T2 >
 	struct union_ < set < T1 ... > , set < T2 ... > >
-		: list_to_set < list < T1 ... , T2 ... > >
+		: to_set < list < T1 ... , T2 ... > >
 	{
 	} ;
 }

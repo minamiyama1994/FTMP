@@ -6,19 +6,19 @@ namespace tmp
 	struct insert ;
 }
 #include"TMP/cons.hpp"
-#include"TMP/list_to_set.hpp"
-#include"TMP/set.hpp"
-#include"TMP/set_to_list.hpp"
+#include"TMP/list.hpp"
+#include"TMP/to_list.hpp"
+#include"TMP/to_set.hpp"
 namespace tmp
 {
 	template < typename set , typename T >
 	struct insert
-		: list_to_set
+		: to_set
 		<
 			typename cons
 			<
 				T ,
-				typename set_to_list < set >::type
+				typename to_list < set >::type
 			>::type
 		>
 	{

@@ -1,16 +1,16 @@
-#ifndef TMP_SET_HPP
-#define TMP_SET_HPP
+#ifndef TMP_DICT_HPP
+#define TMP_DICT_HPP
 namespace tmp
 {
 	template < typename ... T >
-	struct set ;
+	struct dict ;
 }
 namespace tmp
 {
 	template < typename ... T >
-	struct set
+	struct dict
 	{
-		using type = set ;
+		using type = dict ;
 	} ;
 }
 #endif

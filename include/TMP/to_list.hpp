@@ -1,9 +1,9 @@
-#ifndef TMP_SET_TO_LIST_HPP
-#define TMP_SET_TO_LIST_HPP
+#ifndef TMP_TO_LIST_HPP
+#define TMP_TO_LIST_HPP
 namespace tmp
 {
 	template < typename T >
-	struct set_to_list ;
+	struct to_list ;
 }
 #include"TMP/list.hpp"
 #include"TMP/set.hpp"
@@ -11,7 +11,7 @@ namespace tmp
 namespace tmp
 {
 	template < typename ... T >
-	struct set_to_list < set < T ... > >
+	struct to_list < set < T ... > >
 		: unique < list < T ... > >
 	{
 	} ;
