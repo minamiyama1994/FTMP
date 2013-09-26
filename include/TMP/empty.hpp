@@ -5,6 +5,7 @@ namespace tmp
 	template < typename T >
 	struct empty ;
 }
+#include"TMP/dict.hpp"
 #include"TMP/integral.hpp"
 #include"TMP/list.hpp"
 #include"TMP/set.hpp"
@@ -26,6 +27,14 @@ namespace tmp
 		: empty
 		<
 			typename to_list < set < seq ... > >::type
+		>
+	{
+	} ;
+	template < typename ... seq >
+	struct empty < dict < seq ... > >
+		: empty
+		<
+			typename to_list < dict < seq ... > >::type
 		>
 	{
 	} ;
