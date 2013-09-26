@@ -20,7 +20,7 @@ namespace tmp
 	{
 		a value_ ;
 	public :
-		typed_map ( ) = delete ;
+		typed_map ( ) = default ;
 		typed_map ( const typed_map & ) = default ;
 		typed_map ( typed_map && ) = default ;
 		auto operator = ( const typed_map & ) -> typed_map & = default ;
@@ -58,7 +58,7 @@ namespace tmp
 		) ;
 		a value_ ;
 	public :
-		typed_map ( ) = delete ;
+		typed_map ( ) = default ;
 		typed_map ( const typed_map & ) = default ;
 		typed_map ( typed_map && ) = default ;
 		auto operator = ( const typed_map & ) -> typed_map & = default ;
