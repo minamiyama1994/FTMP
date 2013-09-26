@@ -5,8 +5,6 @@ namespace tmp
 	template < typename ... T >
 	struct typed_map ;
 }
-#include<iostream>
-#include<ostream>
 #include<utility>
 #include"TMP/at.hpp"
 #include"TMP/equal.hpp"
@@ -139,15 +137,41 @@ namespace tmp
 	{
 		value_ = std::move ( value ) ;
 	}
-	template < typename k , typename a , typename ... T >
-	auto get ( const typed_map < list < k , a > , T ... > & map ) -> const a &
+	template < bool is_equal , typename k , typename k_ , typename a , typename ... T >
+	struct get_helper ;
+	template < typename k , typename k_ , typename a , typename ... T >
+	auto get ( const typed_map < list < k_ , a > , T ... > & map ) -> decltype ( get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::get ( map ) )
 	{
-		return map.value ( ) ;
+		return get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::get ( map ) ;
 	}
-	template < typename k , typename a , typename ... T >
-	auto get ( typed_map < list < k , a > , T ... > & map ) -> a &
+	template < typename k , typename k_ , typename a , typename ... T >
+	auto get ( typed_map < list < k_ , a > , T ... > & map ) -> decltype ( get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::get ( map ) )
 	{
-		return map.value ( ) ;
+		return get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::get ( map ) ;
 	}
+	template < typename k , typename k_ , typename a , typename ... T >
+	struct get_helper < true , k , k_ , a , T ... >
+	{
+		static auto get ( const typed_map < list < k_ , a > , T ... > & map ) -> const a &
+		{
+			return map.value ( ) ;
+		}
+		static auto get ( typed_map < list < k_ , a > , T ... > & map ) -> a &
+		{
+			return map.value ( ) ;
+		}
+	} ;
+	template < typename k , typename k_ , typename a , typename ... T >
+	struct get_helper < false , k , k_ , a , T ... >
+	{
+		static auto get ( const typed_map < list < k_ , a > , T ... > & map ) -> decltype ( tmp::get < k > ( static_cast < const typed_map < T ... > & > ( map ) ) )
+		{
+			return tmp::get < k > ( static_cast < const typed_map < T ... > & > ( map ) ) ;
+		}
+		static auto get ( typed_map < list < k_ , a > , T ... > & map ) -> decltype ( tmp::get < k > ( static_cast < typed_map < T ... > & > ( map ) ) )
+		{
+			return tmp::get < k > ( static_cast < typed_map < T ... > & > ( map ) ) ;
+		}
+	} ;
 }
 #endif
