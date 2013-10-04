@@ -8,6 +8,7 @@ namespace tmp
 #include"TMP/all.hpp"
 #include"TMP/and.hpp"
 #include"TMP/at.hpp"
+#include"TMP/dict.hpp"
 #include"TMP/elem.hpp"
 #include"TMP/eval.hpp"
 #include"TMP/foldl.hpp"
@@ -88,6 +89,16 @@ namespace tmp
 				typename to_list < set < T2 ... > >::type
 			>::type
 		>
+	{
+	} ;
+	template < typename ... T1 >
+	struct equal < dict < T1 ... > , dict < T1 ... > >
+		: integral < bool , true >
+	{
+	} ;
+	template < typename ... T1 , typename ... T2 >
+	struct equal < dict < T1 ... > , dict < T2 ... > >
+		: equal < set < T1 ... > , set < T2 ... > >
 	{
 	} ;
 }
