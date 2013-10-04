@@ -20,6 +20,11 @@ namespace tmp
 	{
 		using type = arg ;
 	} ;
+	template < typename T >
+	struct meta
+	{
+		using type = T ;
+	} ;
 	namespace detail
 	{
 		template < typename T , unsigned int N >
@@ -43,6 +48,15 @@ namespace tmp
 			: cons
 			<
 				typename at < args , N >::type ,
+				typename apply_helper < tmp::list < Ts ... > , args >::type
+			>
+		{
+		} ;
+		template < typename T , typename ... Ts , typename args >
+		struct apply_helper < tmp::list < tmp::meta < T > , Ts ... > , args >
+			: cons
+			<
+				typename tmp::meta < T >::type ,
 				typename apply_helper < tmp::list < Ts ... > , args >::type
 			>
 		{
