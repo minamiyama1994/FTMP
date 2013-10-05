@@ -1,3 +1,3 @@
 #! /bin/sh
-cp .listup Makefile /C/Users/Owner/Documents/GitHub/TMP/
-cp include/TMP/*.hpp /C/Users/Owner/Documents/GitHub/TMP/include/TMP/
+cp -v .listup Makefile /C/GitHub/TMP/
+cp -v include/TMP/*.hpp /C/GitHub/TMP/include/TMP/

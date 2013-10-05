@@ -6,6 +6,7 @@ namespace tmp
 	struct find ;
 }
 #include"TMP/at.hpp"
+#include"TMP/dict.hpp"
 #include"TMP/equal.hpp"
 #include"TMP/eval.hpp"
 #include"TMP/filter.hpp"
@@ -16,8 +17,8 @@ namespace tmp
 #include"TMP/to_list.hpp"
 namespace tmp
 {
-	template < typename k , typename map >
-	struct find
+	template < typename k , typename ... map >
+	struct find < k , dict < map ... > >
 		: integral
 		<
 			bool ,
@@ -26,7 +27,7 @@ namespace tmp
 				typename filter
 				<
 					eval < equal < id < k > , at < arg < 0 > , integral < int , 0 > > > > ,
-					typename to_list < map >::type
+					typename to_list < dict < map ... > >::type
 				>::type
 			>::type::value != 0
 		>
