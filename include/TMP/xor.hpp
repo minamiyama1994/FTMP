@@ -12,7 +12,19 @@ namespace tmp
 {
 	template < typename T1 , typename T2 >
 	struct xor_
-		: and_ < nand < T1 , T2 > , or_ < T1 , T2 > >
+		: and_
+		<
+			typename nand
+			<
+				typename T1::type ,
+				typename T2::type
+			>::type ,
+			typename or_
+			<
+				typename T1::type ,
+				typename T2::type
+			>::type
+		>
 	{
 	} ;
 }

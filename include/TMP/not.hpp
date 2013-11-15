@@ -10,7 +10,11 @@ namespace tmp
 {
 	template < typename T >
 	struct not_
-		: nand < T , T >
+		: nand
+		<
+			typename T::type ,
+			typename T::type
+		>
 	{
 	} ;
 }

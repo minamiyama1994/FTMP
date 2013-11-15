@@ -11,7 +11,14 @@ namespace tmp
 {
 	template < typename T1 , typename T2 >
 	struct and_
-		: not_ < nand < T1 , T2 > >
+		: not_
+		<
+			typename nand
+			<
+				typename T1::type ,
+				typename T2::type
+			>::type
+		>
 	{
 	} ;
 }

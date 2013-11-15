@@ -2,24 +2,19 @@
 #define TMP_INSERT_HPP
 namespace tmp
 {
-	template < typename set , typename T >
+	template < typename T , typename set >
 	struct insert ;
 }
-#include"TMP/cons.hpp"
-#include"TMP/list.hpp"
-#include"TMP/to_list.hpp"
-#include"TMP/to_set.hpp"
+#include"TMP/set.hpp"
+#include"TMP/union.hpp"
 namespace tmp
 {
-	template < typename set , typename T >
+	template < typename T , typename set >
 	struct insert
-		: to_set
+		: union_
 		<
-			typename cons
-			<
-				T ,
-				typename to_list < set >::type
-			>::type
+			tmp::set < T > ,
+			set
 		>
 	{
 	} ;
