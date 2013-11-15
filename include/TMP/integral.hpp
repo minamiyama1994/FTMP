@@ -13,5 +13,7 @@ namespace tmp
 		using type = integral ;
 		static constexpr T value = val ;
 	} ;
+	template < typename T , T val >
+	constexpr T integral < T , val >::value ;
 }
 #endif
