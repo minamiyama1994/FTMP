@@ -1,3 +1,3 @@
 #! /bin/sh
-cp -v .listup Makefile /C/GitHub/TMP/
+cp -v .listup Makefile README.md /C/GitHub/TMP/
 cp -v include/TMP/*.hpp /C/GitHub/TMP/include/TMP/
