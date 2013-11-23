@@ -7,6 +7,7 @@ namespace tmp
 }
 #include"TMP/at.hpp"
 #include"TMP/dict.hpp"
+#include"TMP/eval.hpp"
 #include"TMP/foldr.hpp"
 #include"TMP/id.hpp"
 #include"TMP/insert_dict.hpp"
@@ -17,12 +18,12 @@ namespace tmp
 	struct to_dict < list < T ... > >
 		: foldr
 		<
-			insert_dict
+			eval < insert_dict
 			<
 				at < arg < 0 > , integral < int , 0 > > ,
 				at < arg < 0 > , integral < int , 1 > > ,
 				id < arg < 1 > >
-			> ,
+			> > ,
 			dict < > ,
 			list < T ... >
 		>
