@@ -26,7 +26,7 @@ namespace tmp
 	struct empty < set < seq ... > >
 		: empty
 		<
-			typename to_list < set < seq ... > >::type
+			list < seq ... >
 		>
 	{
 	} ;

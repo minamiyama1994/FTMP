@@ -13,7 +13,7 @@ namespace tmp
 {
 	template < typename ... T >
 	struct to_list < set < T ... > >
-		: unique < list < T ... > >
+		: list < T ... >
 	{
 	} ;
 	template < typename ... T >

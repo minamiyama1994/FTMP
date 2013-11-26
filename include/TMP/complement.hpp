@@ -13,7 +13,6 @@ namespace tmp
 #include"TMP/list.hpp"
 #include"TMP/to_set.hpp"
 #include"TMP/set.hpp"
-#include"TMP/to_list.hpp"
 namespace tmp
 {
 	template < typename ... T1 , typename ... T2 >
@@ -27,13 +26,13 @@ namespace tmp
 					elem
 					<
 						arg < 0 > ,
-						typename to_list < list < T2 ... > >::type
+						list < T2 ... >
 					> ,
 					id < arg < 1 > > ,
 					cons < arg < 0 > , arg < 1 > >
 				> ,
 				list < > ,
-				typename to_list < list < T1 ... > >::type
+				list < T1 ... >
 			>::type
 		>
 	{

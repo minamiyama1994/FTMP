@@ -8,7 +8,6 @@ namespace tmp
 #include"TMP/integral.hpp"
 #include"TMP/list.hpp"
 #include"TMP/set.hpp"
-#include"TMP/to_list.hpp"
 namespace tmp
 {
 	template < typename ... T >
@@ -18,7 +17,7 @@ namespace tmp
 	} ;
 	template < typename ... T >
 	struct size < set < T ... > >
-		: size < typename to_list < set < T ... > >::type >
+		: size < list < T ... > >
 	{
 	} ;
 }

@@ -15,7 +15,6 @@ namespace tmp
 #include"TMP/integral.hpp"
 #include"TMP/list.hpp"
 #include"TMP/set.hpp"
-#include"TMP/to_list.hpp"
 #include"TMP/size.hpp"
 #include"TMP/zip.hpp"
 namespace tmp
@@ -73,20 +72,20 @@ namespace tmp
 				and_
 				<
 					arg < 0 > ,
-					elem < arg < 1 > , typename to_list < set < T2 ... > >::type >
+					elem < arg < 1 > , list < T2 ... > >
 				> ,
 				integral < bool , true > ,
-				typename to_list < set < T1 ... > >::type
+				list < T1 ... >
 			>::type ,
 			typename foldl
 			<
 				and_
 				<
 					arg < 0 > ,
-					elem < arg < 1 > , typename to_list < set < T1 ... > >::type >
+					elem < arg < 1 > , list < T1 ... > >
 				> ,
 				integral < bool , true > ,
-				typename to_list < set < T2 ... > >::type
+				list < T2 ... >
 			>::type
 		>
 	{

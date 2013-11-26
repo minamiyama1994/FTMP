@@ -5,32 +5,15 @@ namespace tmp
 	template < typename func , typename seq >
 	struct map ;
 }
-#include"TMP/cons.hpp"
-#include"TMP/eval.hpp"
-#include"TMP/foldr.hpp"
-#include"TMP/id.hpp"
 #include"TMP/lambda.hpp"
 #include"TMP/list.hpp"
 #include"TMP/to_set.hpp"
 #include"TMP/set.hpp"
-#include"TMP/to_list.hpp"
 namespace tmp
 {
-	template < typename func , typename seq >
-	struct map
-		: foldr
-		<
-			eval
-			<
-				cons
-				<
-					typename lambda < func >::template apply < arg < 0 > > ,
-					id < arg < 1 > >
-				>
-			> ,
-			list < > ,
-			seq
-		>
+	template < typename func , typename ... seq >
+	struct map < func , list < seq ... > >
+		: list < typename lambda < func >::template apply < seq >::type ... >
 	{
 	} ;
 	template < typename func , typename ... seq >
@@ -40,7 +23,7 @@ namespace tmp
 			typename map
 			<
 				func ,
-				typename to_list < set < seq ... > >::type
+				list < seq ... >
 			>::type
 		>
 	{

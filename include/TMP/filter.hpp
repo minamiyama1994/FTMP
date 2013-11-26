@@ -14,7 +14,6 @@ namespace tmp
 #include"TMP/list.hpp"
 #include"TMP/to_set.hpp"
 #include"TMP/set.hpp"
-#include"TMP/to_list.hpp"
 namespace tmp
 {
 	namespace detail
@@ -47,7 +46,7 @@ namespace tmp
 			typename filter
 			<
 				func ,
-				typename to_list < set < seq ... > >::type
+				list < seq ... >
 			>::type
 		>
 	{
