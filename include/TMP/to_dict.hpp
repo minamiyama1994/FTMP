@@ -10,7 +10,7 @@ namespace tmp
 #include"TMP/eval.hpp"
 #include"TMP/foldr.hpp"
 #include"TMP/id.hpp"
-#include"TMP/insert_dict.hpp"
+#include"TMP/insert.hpp"
 #include"TMP/integral.hpp"
 namespace tmp
 {
@@ -18,7 +18,7 @@ namespace tmp
 	struct to_dict < list < T ... > >
 		: foldr
 		<
-			eval < insert_dict
+			eval < insert
 			<
 				at < arg < 0 > , integral < int , 0 > > ,
 				at < arg < 0 > , integral < int , 1 > > ,

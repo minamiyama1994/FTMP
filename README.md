@@ -339,10 +339,6 @@ Equivalent to Data.List.init of Haskell.
 
 Equivalent to Data.Set.insert of Haskell.
 
-***
-
-#### insert_dict
-
 Equivalent to Data.Map.insert of Haskell.
 
 ***
