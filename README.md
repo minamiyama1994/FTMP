@@ -1,4 +1,4 @@
-# Template Meta Programming Language Library -- TMP Lib --
+# Template Meta Programming Library -- TMP Lib --
 
 ## Motivation
 
