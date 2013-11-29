@@ -5,28 +5,53 @@ namespace tmp
 	template < typename func , typename a , typename bs >
 	struct foldl ;
 }
-#include"TMP/head.hpp"
 #include"TMP/lambda.hpp"
-#include"TMP/list.hpp"
-#include"TMP/tail.hpp"
+#include"TMP/detail/first_half.hpp"
+#include"TMP/detail/second_half.hpp"
 namespace tmp
 {
+	namespace detail
+	{
+		template < typename func , typename a , typename bs1 , typename bs2 >
+		struct foldl_helper ;
+		template < typename func , typename a , typename bs1 , typename bs2 >
+		struct foldl_helper
+			: tmp::foldl
+			<
+				func ,
+				typename tmp::foldl
+				<
+					func ,
+					a ,
+					bs1
+				>::type ,
+				bs2
+			>
+		{
+		} ;
+	}
 	template < typename func , typename a >
 	struct foldl < func , a , list < > >
 	{
 		using type = a ;
 	} ;
-	template < typename func , typename a , typename bs >
+	template < typename func , typename b , typename as >
 	struct foldl
-		: foldl
+		: tmp::detail::foldl_helper
 		<
 			func ,
-			typename lambda < func >::template apply
-			<
-				a ,
-				typename head < bs >::type
-			>::type ,
-			typename tail < bs >::type
+			b ,
+			typename tmp::detail::first_half < as >::type ,
+			typename tmp::detail::second_half < as >::type
+		>
+	{
+	} ;
+	template < typename func , typename a , typename bs >
+	struct foldl < func , a , list < bs > >
+		: lambda < func >::template apply
+		<
+			a ,
+			bs
 		>
 	{
 	} ;
