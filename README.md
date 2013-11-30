@@ -219,6 +219,8 @@ Equivalent to Data.List.all of Haskell.
 
 Equivalent to (&&) of Haskell.
 
+Equivalent to Data.List.and of Haskell.
+
 ***
 
 #### any
@@ -240,6 +242,10 @@ Equivalent to Data.List.!! of Haskell.
 ***
 
 #### complement
+
+Equivalent to Data.List.\\ of Haskell.
+
+Equivalent to Data.Set.\\ of Haskell.
 
 Equivalent to Data.Set.difference of Haskell.
 

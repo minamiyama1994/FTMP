@@ -22,34 +22,31 @@ namespace ftmp
 	template < typename T1 , typename T2 >
 	struct complement ;
 }
-#include"FTMP/cons.hpp"
 #include"FTMP/elem.hpp"
-#include"FTMP/eval_if.hpp"
-#include"FTMP/foldr.hpp"
-#include"FTMP/id.hpp"
+#include"FTMP/filter.hpp"
 #include"FTMP/list.hpp"
-#include"FTMP/to_set.hpp"
+#include"FTMP/not.hpp"
 #include"FTMP/set.hpp"
+#include"FTMP/to_set.hpp"
 namespace ftmp
 {
+	template < typename ... T1 , typename ... T2 >
+	struct complement < list < T1 ... > , list < T2 ... > >
+		: filter
+		<
+			not_ < elem < arg < 0 > , list < T2 ... > > > ,
+			list < T1 ... >
+		>
+	{
+	} ;
 	template < typename ... T1 , typename ... T2 >
 	struct complement < set < T1 ... > , set < T2 ... > >
 		: to_set
 		<
-			typename foldr
+			typename complement
 			<
-				eval_if
-				<
-					elem
-					<
-						arg < 0 > ,
-						list < T2 ... >
-					> ,
-					id < arg < 1 > > ,
-					cons < arg < 0 > , arg < 1 > >
-				> ,
-				list < > ,
-				list < T1 ... >
+				list < T1 ... > ,
+				list < T2 ... >
 			>::type
 		>
 	{

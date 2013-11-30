@@ -19,13 +19,26 @@
 #define FTMP_AND_HPP
 namespace ftmp
 {
-	template < typename T1 , typename T2 >
+	template < typename T1 , typename T2 = void >
 	struct and_ ;
 }
+#include"FTMP/foldr.hpp"
+#include"FTMP/integral.hpp"
+#include"FTMP/list.hpp"
 #include"FTMP/nand.hpp"
 #include"FTMP/not.hpp"
 namespace ftmp
 {
+	template < typename ... T >
+	struct and_ < list < T ... > , void >
+		: foldr
+		<
+			and_ < arg < 0 > , arg < 1 > > ,
+			integral < bool , true > ,
+			list < T ... >
+		>
+	{
+	} ;
 	template < typename T1 , typename T2 >
 	struct and_
 		: not_

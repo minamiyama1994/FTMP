@@ -17,10 +17,9 @@
  */
 #ifndef FTMP_INSERT_HPP
 #define FTMP_INSERT_HPP
-#include"FTMP/none.hpp"
 namespace ftmp
 {
-	template < typename T , typename T1 , typename T2 = none >
+	template < typename T , typename T1 , typename T2 = void >
 	struct insert ;
 }
 #include"FTMP/at.hpp"
@@ -62,7 +61,7 @@ namespace ftmp
 	{
 	} ;
 	template < typename T , typename set >
-	struct insert < T , set , none >
+	struct insert < T , set , void >
 		: union_
 		<
 			ftmp::set < T > ,
