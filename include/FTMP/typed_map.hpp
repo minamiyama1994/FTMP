@@ -20,7 +20,7 @@
 namespace ftmp
 {
 	template < typename ... T >
-	struct typed_map ;
+	class typed_map ;
 }
 #include<utility>
 #include"FTMP/at.hpp"

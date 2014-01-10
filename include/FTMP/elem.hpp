@@ -24,24 +24,12 @@ namespace ftmp
 }
 #include"FTMP/any.hpp"
 #include"FTMP/equal.hpp"
-#include"FTMP/integral.hpp"
 #include"FTMP/list.hpp"
-#include"FTMP/set.hpp"
 namespace ftmp
 {
 	template < typename T , typename seq >
 	struct elem
 		: any < equal < T , arg < 0 > > , seq >
-	{
-	} ;
-	template < typename T , typename ... seq1 , typename ... seq2 >
-	struct elem < T , list < seq1 ... , T , seq2 ... > >
-		: integral < bool , true >
-	{
-	} ;
-	template < typename T , typename ... seq1 , typename ... seq2 >
-	struct elem < T , set < seq1 ... , T , seq2 ... > >
-		: integral < bool , true >
 	{
 	} ;
 }

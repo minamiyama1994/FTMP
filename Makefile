@@ -20,7 +20,7 @@ test_:
 %.dummy:include/FTMP/%.hpp
 	echo $< | sed -e s'/^include\//#include"/' | sed -e s'/$$/"/' > $*.cpp
 	echo "auto main ( ) -> int { }" >> $*.cpp
-	g++ -g -I./include/ -Wall -Wextra -Werror --save-temps -std=c++11 $*.cpp -o $*
+	$(CXX) -g -I./include/ -Wall -Wextra -Werror --save-temps -std=c++11 $*.cpp -o $*
 	rm -rfv $*.*
 %.include_header:include/FTMP/%.hpp
 	( for word in $$( cat $< ) ; do echo $$word; done ) | sort | uniq.exe | grep '^[a-z_]*$$' | sed -e s'/^/#include"FTMP\//' | sed -e s'/$$/\.hpp"/'
