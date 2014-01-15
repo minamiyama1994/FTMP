@@ -16,3 +16,4 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 cp -v .listup Makefile README.md /C/GitHub/FTMP/
 cp -v include/FTMP/*.hpp /C/GitHub/FTMP/include/FTMP/
+cp -v include/FTMP/detail/*.hpp /C/GitHub/FTMP/include/FTMP/detail/
