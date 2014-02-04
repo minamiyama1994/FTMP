@@ -33,7 +33,11 @@ namespace ftmp
 	struct any
 		: foldl
 		<
-			or_ < arg < 0 > , typename lambda < func >::template apply < arg < 1 > > > ,
+			eval < or_
+			<
+				id < arg < 0 > > ,
+				typename lambda < func >::template apply < arg < 1 > >
+			> > ,
 			integral < bool , false > ,
 			seq
 		>

@@ -41,14 +41,14 @@ namespace ftmp
 		template < typename k , typename a , typename dict_ >
 		struct insert_dict_helper ;
 		template < typename k , typename a , typename ... dict_ >
-		struct insert_dict_helper < k , a , ftmp::list < dict_ ... > >
-			: ftmp::dict < ftmp::list < k , a > , dict_ ... >
+		struct insert_dict_helper < k , a , list < dict_ ... > >
+			: dict < list < k , a > , dict_ ... >
 		{
 		} ;
 	}
 	template < typename k , typename a , typename dict_ >
 	struct insert
-		: ftmp::detail::insert_dict_helper
+		: detail::insert_dict_helper
 		<
 			k ,
 			a ,
@@ -60,12 +60,12 @@ namespace ftmp
 		>
 	{
 	} ;
-	template < typename T , typename set >
-	struct insert < T , set , void >
+	template < typename T , typename s >
+	struct insert < T , s , void >
 		: union_
 		<
-			ftmp::set < T > ,
-			set
+			set < T > ,
+			s
 		>
 	{
 	} ;

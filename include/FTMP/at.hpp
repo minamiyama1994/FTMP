@@ -35,31 +35,31 @@ namespace ftmp
 		template < typename I , typename N , typename T , typename enable = void >
 		struct skip ;
 		template < typename index_type , index_type I , index_type N , typename ... T >
-		struct skip < ftmp::integral < index_type , I > , ftmp::integral < index_type , N > , ftmp::list < T ... > , typename std::enable_if < ( I == 0 ) >::type >
-			: ftmp::id < ftmp::list < T ... > >
+		struct skip < integral < index_type , I > , integral < index_type , N > , list < T ... > , typename std::enable_if < ( I == 0 ) >::type >
+			: id < list < T ... > >
 		{
 		} ;
 		template < typename index_type , index_type I , index_type N , typename ... T >
-		struct skip < ftmp::integral < index_type , I > , ftmp::integral < index_type , N > , ftmp::list < T ... > , typename std::enable_if < ( I != 0 && I < N / 2 ) >::type >
+		struct skip < integral < index_type , I > , integral < index_type , N > , list < T ... > , typename std::enable_if < ( I != 0 && I < N / 2 ) >::type >
 			: skip
 			<
-				ftmp::integral < index_type , I - 1 > ,
-				ftmp::integral < index_type , N / 2 - 1 > ,
-				typename ftmp::tail < ftmp::list < T ... > >::type
+				integral < index_type , I - 1 > ,
+				integral < index_type , N / 2 - 1 > ,
+				typename tail < list < T ... > >::type
 			>
 		{
 		} ;
 		template < typename index_type , index_type I , index_type N , typename ... T >
-		struct skip < ftmp::integral < index_type , I > , ftmp::integral < index_type , N > , ftmp::list < T ... > , typename std::enable_if < ( I != 0 && I >= N / 2 ) >::type >
+		struct skip < integral < index_type , I > , integral < index_type , N > , list < T ... > , typename std::enable_if < ( I != 0 && I >= N / 2 ) >::type >
 			: skip
 			<
-				ftmp::integral < index_type , I - N / 2 > ,
-				ftmp::integral < index_type , N - N / 2 > ,
+				integral < index_type , I - N / 2 > ,
+				integral < index_type , N - N / 2 > ,
 				typename skip
 				<
-					ftmp::integral < index_type , N / 2 - 1 > ,
-					ftmp::integral < index_type , N / 2 > ,
-					typename ftmp::tail < ftmp::list < T ... > >::type
+					integral < index_type , N / 2 - 1 > ,
+					integral < index_type , N / 2 > ,
+					typename tail < list < T ... > >::type
 				>::type
 			>
 		{
@@ -69,7 +69,7 @@ namespace ftmp
 	struct at < list < T ... > , integral < index_type , index > >
 		: head
 		<
-			typename ftmp::detail::skip
+			typename detail::skip
 			<
 				integral < index_type , index > ,
 				integral < index_type , sizeof ... ( T ) > ,

@@ -40,7 +40,7 @@ namespace ftmp
 	}
 	template < typename T >
 	struct to_set
-		: ftmp::detail::to_set_helper < typename unique < T >::type >
+		: detail::to_set_helper < typename unique < T >::type >
 	{
 	} ;
 }

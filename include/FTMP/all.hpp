@@ -23,6 +23,7 @@ namespace ftmp
 	struct all ;
 }
 #include"FTMP/and.hpp"
+#include"FTMP/eval.hpp"
 #include"FTMP/foldl.hpp"
 #include"FTMP/integral.hpp"
 #include"FTMP/lambda.hpp"
@@ -33,7 +34,11 @@ namespace ftmp
 	struct all
 		: foldl
 		<
-			and_ < typename lambda < func >::template apply < arg < 1 > > , arg < 0 > > ,
+			eval < and_
+			<
+				typename lambda < func >::template apply < arg < 1 > > ,
+				id < arg < 0 > >
+			> > ,
 			integral < bool , true > ,
 			seq
 		>

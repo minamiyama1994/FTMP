@@ -28,17 +28,17 @@ namespace ftmp
 namespace ftmp
 {
 	template < typename T , T begin >
-	struct make_integer_sequence < ftmp::integral < T , begin > , ftmp::integral < T , begin > >
-		: ftmp::list < >
+	struct make_integer_sequence < integral < T , begin > , integral < T , begin > >
+		: list < >
 	{
 	} ;
 	template < typename T , T begin >
-	struct make_integer_sequence < ftmp::integral < T , begin > , ftmp::integral < T , begin + 1 > >
-		: ftmp::list < ftmp::integral < T , begin > >
+	struct make_integer_sequence < integral < T , begin > , integral < T , begin + 1 > >
+		: list < integral < T , begin > >
 	{
 	} ;
 	template < typename T , T begin , T end >
-	struct make_integer_sequence < ftmp::integral < T , begin > , ftmp::integral < T , end > >
+	struct make_integer_sequence < integral < T , begin > , integral < T , end > >
 		: append
 		<
 			typename make_integer_sequence < integral < T , begin > , integral < T , begin + ( end - begin ) / 2 > >::type ,

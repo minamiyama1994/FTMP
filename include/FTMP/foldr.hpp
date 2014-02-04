@@ -33,10 +33,10 @@ namespace ftmp
 		struct foldr_helper ;
 		template < typename func , typename b , typename as1 , typename as2 >
 		struct foldr_helper
-			: ftmp::foldr
+			: foldr
 			<
 				func ,
-				typename ftmp::foldr
+				typename foldr
 				<
 					func ,
 					b ,
@@ -54,12 +54,12 @@ namespace ftmp
 	} ;
 	template < typename func , typename b , typename as >
 	struct foldr
-		: ftmp::detail::foldr_helper
+		: detail::foldr_helper
 		<
 			func ,
 			b ,
-			typename ftmp::detail::first_half < as >::type ,
-			typename ftmp::detail::second_half < as >::type
+			typename detail::first_half < as >::type ,
+			typename detail::second_half < as >::type
 		>
 	{
 	} ;
@@ -69,7 +69,7 @@ namespace ftmp
 		<
 			as ,
 			b
-		>
+		>::type
 	{
 	} ;
 }

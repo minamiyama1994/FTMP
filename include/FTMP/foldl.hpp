@@ -33,10 +33,10 @@ namespace ftmp
 		struct foldl_helper ;
 		template < typename func , typename a , typename bs1 , typename bs2 >
 		struct foldl_helper
-			: ftmp::foldl
+			: foldl
 			<
 				func ,
-				typename ftmp::foldl
+				typename foldl
 				<
 					func ,
 					a ,
@@ -54,12 +54,12 @@ namespace ftmp
 	} ;
 	template < typename func , typename a , typename bs >
 	struct foldl
-		: ftmp::detail::foldl_helper
+		: detail::foldl_helper
 		<
 			func ,
 			a ,
-			typename ftmp::detail::first_half < bs >::type ,
-			typename ftmp::detail::second_half < bs >::type
+			typename detail::first_half < bs >::type ,
+			typename detail::second_half < bs >::type
 		>
 	{
 	} ;
@@ -69,7 +69,7 @@ namespace ftmp
 		<
 			a ,
 			bs
-		>
+		>::type
 	{
 	} ;
 }

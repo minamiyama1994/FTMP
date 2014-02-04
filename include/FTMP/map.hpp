@@ -30,7 +30,7 @@ namespace ftmp
 {
 	template < typename func , typename ... seq >
 	struct map < func , list < seq ... > >
-		: list < typename lambda < func >::template apply < seq >::type ... >
+		: list < typename lambda < func >::template apply < seq >::type::type ... >
 	{
 	} ;
 	template < typename func , typename ... seq >

@@ -16,9 +16,9 @@ namespace ftmp
 	{
 		template < typename as , typename index_seq >
 		struct half_helper
-			: ftmp::map
+			: map
 			<
-				ftmp::at < as , ftmp::arg < 0 > > , 
+				ftmp::at < as , arg < 0 > > , 
 				index_seq
 			>
 		{

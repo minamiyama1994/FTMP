@@ -41,30 +41,30 @@ namespace ftmp
 		struct break_helper
 			: foldl
 			<
-				ftmp::eval_if
+				eval_if
 				<
-					ftmp::and_
+					eval < and_
 					<
-						typename ftmp::lambda < func >::template apply < ftmp::arg < 1 > > ,
-						ftmp::at < ftmp::arg < 0 > , ftmp::integral < int , 2 > >
-					> ,
+						typename lambda < func >::template apply < arg < 1 > > ,
+						id < ftmp::at < arg < 0 > , integral < int , 2 > > >
+					> > ,
 					eval < list
 					<
-						ftmp::eval < ftmp::cons
+						eval < cons
 						<
-							ftmp::id < ftmp::arg < 1 > > ,
-							ftmp::at < ftmp::arg < 0 > , ftmp::integral < int , 0 > >
+							id < arg < 1 > > ,
+							ftmp::at < arg < 0 > , integral < int , 0 > >
 						> > ,
-						ftmp::at < ftmp::arg < 0 > , ftmp::integral < int , 1 > > ,
+						ftmp::at < arg < 0 > , integral < int , 1 > > ,
 						integral < bool , true >
 					> > ,
 					eval < list
 					<
-						ftmp::at < ftmp::arg < 0 > , ftmp::integral < int , 0 > > ,
-						ftmp::eval < ftmp::cons
+						ftmp::at < arg < 0 > , integral < int , 0 > > ,
+						eval < cons
 						<
-							ftmp::id < ftmp::arg < 1 > > ,
-							ftmp::at < ftmp::arg < 0 > , ftmp::integral < int , 1 > >
+							id < arg < 1 > > ,
+							ftmp::at < arg < 0 > , integral < int , 1 > >
 						> > ,
 						integral < bool , false >
 					> >
@@ -84,7 +84,7 @@ namespace ftmp
 			<
 				at
 				<
-					typename ftmp::detail::break_helper < func , seq >::type ,
+					typename detail::break_helper < func , seq >::type ,
 					arg < 0 >
 				> ,
 				list < integral < int , 0 > , integral < int , 1 > >

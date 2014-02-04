@@ -33,7 +33,7 @@ namespace ftmp
 			: lambda < func >::template apply
 			<
 				typename composite < funcs ... >::template apply < T >::type
-			>
+			>::type
 		{
 		} ;
 	} ;

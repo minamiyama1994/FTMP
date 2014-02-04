@@ -157,23 +157,23 @@ namespace ftmp
 	template < bool is_equal , typename k , typename k_ , typename a , typename ... T >
 	struct get_helper ;
 	template < typename k , typename k_ , typename a , typename ... T >
-	auto get ( const typed_map < list < k_ , a > , T ... > & map ) -> decltype ( get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::get ( map ) )
+	auto get ( const typed_map < list < k_ , a > , T ... > & map ) -> decltype ( get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::func ( map ) )
 	{
-		return get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::get ( map ) ;
+		return get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::func ( map ) ;
 	}
 	template < typename k , typename k_ , typename a , typename ... T >
-	auto get ( typed_map < list < k_ , a > , T ... > & map ) -> decltype ( get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::get ( map ) )
+	auto get ( typed_map < list < k_ , a > , T ... > & map ) -> decltype ( get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::func ( map ) )
 	{
-		return get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::get ( map ) ;
+		return get_helper < equal < k , k_ >::type::value , k , k_ , a , T ... >::func ( map ) ;
 	}
 	template < typename k , typename k_ , typename a , typename ... T >
 	struct get_helper < true , k , k_ , a , T ... >
 	{
-		static auto get ( const typed_map < list < k_ , a > , T ... > & map ) -> const a &
+		static auto func ( const typed_map < list < k_ , a > , T ... > & map ) -> const a &
 		{
 			return map.value ( ) ;
 		}
-		static auto get ( typed_map < list < k_ , a > , T ... > & map ) -> a &
+		static auto func ( typed_map < list < k_ , a > , T ... > & map ) -> a &
 		{
 			return map.value ( ) ;
 		}
@@ -181,13 +181,13 @@ namespace ftmp
 	template < typename k , typename k_ , typename a , typename ... T >
 	struct get_helper < false , k , k_ , a , T ... >
 	{
-		static auto get ( const typed_map < list < k_ , a > , T ... > & map ) -> decltype ( ftmp::get < k > ( static_cast < const typed_map < T ... > & > ( map ) ) )
+		static auto func ( const typed_map < list < k_ , a > , T ... > & map ) -> decltype ( get < k > ( static_cast < const typed_map < T ... > & > ( map ) ) )
 		{
-			return ftmp::get < k > ( static_cast < const typed_map < T ... > & > ( map ) ) ;
+			return get < k > ( static_cast < const typed_map < T ... > & > ( map ) ) ;
 		}
-		static auto get ( typed_map < list < k_ , a > , T ... > & map ) -> decltype ( ftmp::get < k > ( static_cast < typed_map < T ... > & > ( map ) ) )
+		static auto func ( typed_map < list < k_ , a > , T ... > & map ) -> decltype ( get < k > ( static_cast < typed_map < T ... > & > ( map ) ) )
 		{
-			return ftmp::get < k > ( static_cast < typed_map < T ... > & > ( map ) ) ;
+			return get < k > ( static_cast < typed_map < T ... > & > ( map ) ) ;
 		}
 	} ;
 }

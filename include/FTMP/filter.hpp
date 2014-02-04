@@ -37,7 +37,7 @@ namespace ftmp
 	{
 		template < typename func , typename T >
 		struct eval_lambda
-			: lambda < func >::template apply < T >::type
+			: lambda < func >::template apply < T >::type::type
 		{
 		} ;
 	}
@@ -47,7 +47,7 @@ namespace ftmp
 		<
 			eval_if
 			<
-				ftmp::detail::eval_lambda < func , arg < 0 > > ,
+				detail::eval_lambda < func , arg < 0 > > ,
 				cons < arg < 0 > , arg < 1 > > ,
 				id < arg < 1 > >
 			> ,

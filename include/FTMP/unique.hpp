@@ -39,7 +39,7 @@ namespace ftmp
 		struct eval_filter
 			: filter
 			<
-				ftmp::not_ < ftmp::equal < ftmp::arg < 0 > , T1 > > ,
+				not_ < equal < arg < 0 > , T1 > > ,
 				T2
 			>
 		{
@@ -49,7 +49,7 @@ namespace ftmp
 	struct unique
 		: foldr
 		<
-			eval < cons < id < arg < 0 > > , ftmp::detail::eval_filter < arg < 0 > , arg < 1 > > > > ,
+			eval < cons < id < arg < 0 > > , detail::eval_filter < arg < 0 > , arg < 1 > > > > ,
 			list < > ,
 			seq
 		>

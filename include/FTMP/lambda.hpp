@@ -46,7 +46,7 @@ namespace ftmp
 	{
 		template < typename T , unsigned int N >
 		struct at
-			: ftmp::at < T , ftmp::integral < unsigned int , N > >
+			: ftmp::at < T , integral < unsigned int , N > >
 		{
 		} ;
 		template < typename func , typename args >
@@ -56,31 +56,31 @@ namespace ftmp
 		template < typename func , typename list_ >
 		struct apply_impl ;
 		template < template < typename ... T_ > class func_template , typename ... T , typename ... args >
-		struct apply_impl < func_template < T ... > , ftmp::list < args ... > >
+		struct apply_impl < func_template < T ... > , list < args ... > >
 		{
 			using type = func_template < args ... > ;
 		} ;
 		template < unsigned int N , typename ... Ts , typename args >
-		struct apply_helper < ftmp::list < ftmp::arg < N > , Ts ... > , args >
+		struct apply_helper < list < arg < N > , Ts ... > , args >
 			: cons
 			<
 				typename at < args , N >::type ,
-				typename apply_helper < ftmp::list < Ts ... > , args >::type
+				typename apply_helper < list < Ts ... > , args >::type
 			>
 		{
 		} ;
 		template < typename T , typename ... Ts , typename args >
-		struct apply_helper < ftmp::list < ftmp::meta < T > , Ts ... > , args >
+		struct apply_helper < list < meta < T > , Ts ... > , args >
 			: cons
 			<
-				typename ftmp::meta < T >::type ,
-				typename apply_helper < ftmp::list < Ts ... > , args >::type
+				typename meta < T >::type ,
+				typename apply_helper < list < Ts ... > , args >::type
 			>
 		{
 		} ;
 		template < typename T , typename args >
 		struct apply_helper
-			: ftmp::cons
+			: cons
 			<
 				typename apply < typename head < T >::type , args >::type ,
 				typename apply_helper < typename tail < T >::type , args >::type
@@ -88,13 +88,13 @@ namespace ftmp
 		{
 		} ;
 		template < typename args >
-		struct apply_helper < ftmp::list < > , args >
+		struct apply_helper < list < > , args >
 		{
-			using type = ftmp::list < > ;
+			using type = list < > ;
 		} ;
 		template < typename T , typename args >
 		struct apply
-			: ftmp::id < T >
+			: id < T >
 		{
 		} ;
 		template < template < typename ... T_ > class func_template , typename ... T , typename args >
@@ -104,7 +104,7 @@ namespace ftmp
 				func_template < T ... > ,
 				typename apply_helper
 				<
-					ftmp::list < T ... > ,
+					list < T ... > ,
 					args
 				>::type
 			>
@@ -116,11 +116,11 @@ namespace ftmp
 	{
 		template < typename ... T >
 		struct apply
-			: ftmp::detail::apply
+			: detail::apply
 			<
 				func ,
 				list < T ... > 
-			>::type
+			>
 		{
 		} ;
 	} ;

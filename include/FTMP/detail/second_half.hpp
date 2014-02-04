@@ -17,14 +17,14 @@ namespace ftmp
 	namespace detail
 	{
 		template < typename ... as >
-		struct second_half < ftmp::list < as ... > >
+		struct second_half < list < as ... > >
 			: half_helper
 			<
-				ftmp::list < as ... > ,
-				typename ftmp::make_integer_sequence
+				list < as ... > ,
+				typename make_integer_sequence
 				<
-					ftmp::integral < decltype ( sizeof ... ( as ) ) , sizeof ... ( as ) / 2 > ,
-					ftmp::integral < decltype ( sizeof ... ( as ) ) , sizeof ... ( as ) >
+					integral < decltype ( sizeof ... ( as ) ) , sizeof ... ( as ) / 2 > ,
+					integral < decltype ( sizeof ... ( as ) ) , sizeof ... ( as ) >
 				>::type
 			>
 		{

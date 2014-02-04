@@ -34,7 +34,7 @@ namespace ftmp
 	{
 		template < typename ... T >
 		struct variadic_cons
-			: ftmp::cons
+			: cons
 			<
 				list < typename head < T >::type ... > ,
 				typename zip < typename tail < T >::type ... >::type
@@ -48,7 +48,7 @@ namespace ftmp
 		<
 			any < empty < arg < 0 > > , list < T ... > > ,
 			list < > ,
-			ftmp::detail::variadic_cons < T ... >
+			detail::variadic_cons < T ... >
 		>
 	{
 	} ;
