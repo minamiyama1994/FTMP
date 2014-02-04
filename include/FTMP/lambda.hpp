@@ -44,70 +44,21 @@ namespace ftmp
 	} ;
 	namespace detail
 	{
-		template < typename T , unsigned int N >
-		struct at
-			: ftmp::at < T , integral < unsigned int , N > >
-		{
-		} ;
 		template < typename func , typename args >
 		struct apply ;
-		template < typename Ts , typename args >
-		struct apply_helper ;
-		template < typename func , typename list_ >
-		struct apply_impl ;
-		template < template < typename ... T_ > class func_template , typename ... T , typename ... args >
-		struct apply_impl < func_template < T ... > , list < args ... > >
-		{
-			using type = func_template < args ... > ;
-		} ;
-		template < unsigned int N , typename ... Ts , typename args >
-		struct apply_helper < list < arg < N > , Ts ... > , args >
-			: cons
-			<
-				typename at < args , N >::type ,
-				typename apply_helper < list < Ts ... > , args >::type
-			>
-		{
-		} ;
-		template < typename T , typename ... Ts , typename args >
-		struct apply_helper < list < meta < T > , Ts ... > , args >
-			: cons
-			<
-				typename meta < T >::type ,
-				typename apply_helper < list < Ts ... > , args >::type
-			>
-		{
-		} ;
-		template < typename T , typename args >
-		struct apply_helper
-			: cons
-			<
-				typename apply < typename head < T >::type , args >::type ,
-				typename apply_helper < typename tail < T >::type , args >::type
-			>
-		{
-		} ;
-		template < typename args >
-		struct apply_helper < list < > , args >
-		{
-			using type = list < > ;
-		} ;
 		template < typename T , typename args >
 		struct apply
 			: id < T >
 		{
 		} ;
-		template < template < typename ... T_ > class func_template , typename ... T , typename args >
+		template < unsigned int N , typename args >
+		struct apply < arg < N > , args >
+			: at < args , integral < unsigned int , N > >
+		{
+		} ;
+		template < template < typename ... > class func_template , typename ... T , typename args >
 		struct apply < func_template < T ... > , args >
-			: apply_impl
-			<
-				func_template < T ... > ,
-				typename apply_helper
-				<
-					list < T ... > ,
-					args
-				>::type
-			>
+			: id < func_template < typename apply < T , args >::type ... > >
 		{
 		} ;
 	}

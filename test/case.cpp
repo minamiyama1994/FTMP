@@ -16,4 +16,76 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/case.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::case_ < char >::of
+	<
+		ftmp::match < char , long > ,
+		ftmp::match < short , int > ,
+		ftmp::match < int , short > ,
+		ftmp::match < long , char > ,
+		ftmp::match < ftmp::pattern < 0 > , ftmp::pattern < 0 > >
+	>::type ,
+	long
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::case_ < short >::of
+	<
+		ftmp::match < char , long > ,
+		ftmp::match < short , int > ,
+		ftmp::match < int , short > ,
+		ftmp::match < long , char > ,
+		ftmp::match < ftmp::pattern < 0 > , ftmp::pattern < 0 > >
+	>::type ,
+	int
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::case_ < int >::of
+	<
+		ftmp::match < char , long > ,
+		ftmp::match < short , int > ,
+		ftmp::match < int , short > ,
+		ftmp::match < long , char > ,
+		ftmp::match < ftmp::pattern < 0 > , ftmp::pattern < 0 > >
+	>::type ,
+	short
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::case_ < long >::of
+	<
+		ftmp::match < char , long > ,
+		ftmp::match < short , int > ,
+		ftmp::match < int , short > ,
+		ftmp::match < long , char > ,
+		ftmp::match < ftmp::pattern < 0 > , ftmp::pattern < 0 > >
+	>::type ,
+	char
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::case_ < float >::of
+	<
+		ftmp::match < char , long > ,
+		ftmp::match < short , int > ,
+		ftmp::match < int , short > ,
+		ftmp::match < long , char > ,
+		ftmp::match < ftmp::pattern < 0 > , ftmp::pattern < 0 > >
+	>::type ,
+	float
+>::type::value , "" ) ;
+static_assert ( ! ftmp::equal
+<
+	ftmp::case_ < char >::of
+	<
+		ftmp::match < char , long > ,
+		ftmp::match < short , int > ,
+		ftmp::match < int , short > ,
+		ftmp::match < long , char > ,
+		ftmp::match < ftmp::pattern < 0 > , ftmp::pattern < 0 > >
+	>::type ,
+	float
+>::type::value , "" ) ;
 auto main ( ) -> int { }

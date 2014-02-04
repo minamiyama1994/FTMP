@@ -34,6 +34,8 @@ namespace ftmp
 #include"FTMP/concat.hpp"
 #include"FTMP/list.hpp"
 #include"FTMP/integral.hpp"
+#include"FTMP/maybe.hpp"
+#include"FTMP/print.hpp"
 namespace ftmp
 {
 	namespace detail
@@ -91,7 +93,7 @@ namespace ftmp
 		template < typename >
 		struct set_length ;
 		template < typename ... l >
-		struct set_length < list < l ... > >
+		struct set_length < list < just < l > ... > >
 			: map
 			<
 				expand_length < arg < 0 > , typename max_length < list < l ... > >::type > ,
@@ -104,37 +106,59 @@ namespace ftmp
 		template < typename T >
 		struct match_result < T , T >
 		{
-			using type = list < > ;
+			using type = just < list < > > ;
+		} ;
+		template < typename T1 , typename T2 >
+		struct match_result
+		{
+			using type = nothing;
 		} ;
 		template < typename T , unsigned int N >
 		struct match_result < T , pattern < N > >
-			: append
+			: id
 			<
-				typename map
+				just
 				<
-					id < list < > > ,
-					typename make_integer_sequence < integral < unsigned int , 0 > , integral < unsigned int , N > >::type
-				>::type ,
-				list < T >
+					typename append
+					<
+						typename map
+						<
+							id < list < > > ,
+							typename make_integer_sequence < integral < unsigned int , 0 > , integral < unsigned int , N > >::type
+						>::type ,
+						list < list < T > >
+					>::type
+				>
 			>
 		{
 		} ;
 		template < template < typename ... > class temp , typename ... T , typename ... P >
 		struct match_result < temp < T ... > , temp < P ... > >
-			: map
+			: eval_if
 			<
-				concat < arg < 0 > > ,
-				typename zip
+				all
 				<
-					typename set_length
+					not_
 					<
-						typename map
+						equal < nothing , arg < 0 > >
+					> ,
+					list < typename match_result < T , P >::type ... >
+				> ,
+				eval < map
+				<
+					id < concat < arg < 0 > > > ,
+					eval < zip
+					<
+						set_length
 						<
-							arg < 0 > ,
-							list < match_result < T , P > ... >
-						>::type
-					>::type
-				>::type
+							eval < list
+							<
+								typename match_result < T , P >::type ...
+							> >
+						>
+					> >
+				> > ,
+				id < nothing >
 			>
 		{
 		} ;
@@ -142,10 +166,15 @@ namespace ftmp
 		struct is_match ;
 		template < typename T , typename P , typename R >
 		struct is_match < T , match < P , R > >
-			: all
+			: eval_if
 			<
-				is_one_only < arg < 0 > > ,
-				typename match_result < T , P >::type
+				equal < nothing , typename match_result < T , P >::type > ,
+				id < integral < bool , false > > ,
+				eval < all
+				<
+					id < is_one_only < arg < 0 > > > ,
+					typename match_result < T , P >::type
+				> >
 			>
 		{
 		} ;
@@ -153,10 +182,27 @@ namespace ftmp
 		struct do_match_impl ;
 		template < typename R , typename ... l >
 		struct do_match_impl < R , list < l ... > >
-			: lambda < R >::template apply
+			:lambda < R >::template apply
 			<
 				l ...
 			>
+		{
+		} ;
+		template < typename >
+		struct replace ;
+		template < typename T >
+		struct replace
+			: id < T >
+		{
+		} ;
+		template < unsigned int N >
+		struct replace < pattern < N > >
+			: id < arg < N > >
+		{
+		} ;
+		template < template < typename ... > class temp , typename ... T >
+		struct replace < temp < T ... > >
+			: id < temp < typename replace < T >::type ... > >
 		{
 		} ;
 		template < typename , typename >
@@ -165,10 +211,10 @@ namespace ftmp
 		struct do_match < T , match < P , R > >
 			: do_match_impl
 			<
-				R ,
+				typename replace < R >::type ,
 				typename concat
 				<
-					typename match_result < T , P >::type
+					typename match_result < T , P >::type::type
 				>::type
 			>
 		{

@@ -18,7 +18,7 @@
 #include"FTMP/all.hpp"
 static_assert ( ftmp::all
 <
-	ftmp::id < ftmp::arg < 0 > > ,
+	ftmp::arg < 0 > ,
 	ftmp::list
 	<
 		ftmp::integral < bool , true > ,
@@ -36,7 +36,7 @@ struct int_to_bool < ftmp::integral < int , N > >
 } ;
 static_assert ( ftmp::all
 <
-	int_to_bool < ftmp::arg < 0 > > ,
+	ftmp::arg < 0 > ,
 	ftmp::list
 	<
 		ftmp::integral < int , 1 > ,

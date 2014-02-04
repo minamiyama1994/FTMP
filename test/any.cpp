@@ -18,7 +18,7 @@
 #include"FTMP/any.hpp"
 static_assert ( ftmp::any
 <
-	ftmp::id < ftmp::arg < 0 > > ,
+	ftmp::arg < 0 > ,
 	ftmp::list
 	<
 		ftmp::integral < bool , true > ,
