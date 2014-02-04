@@ -45,8 +45,11 @@ namespace ftmp
 				<
 					eval < and_
 					<
-						typename lambda < func >::template apply < arg < 1 > > ,
-						id < ftmp::at < arg < 0 > , integral < int , 2 > > >
+						ftmp::at < arg < 0 > , integral < int , 2 > > ,
+						not_
+						<
+							typename lambda < func >::template apply < arg < 1 > >::type
+						>
 					> > ,
 					eval < list
 					<

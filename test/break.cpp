@@ -16,4 +16,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/break.hpp"
+#include"FTMP/print.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::break_
+	<
+		ftmp::equal < ftmp::arg < 0 > , float > ,
+		ftmp::list < char , short , int , long , float , double >
+	>::type ,
+	ftmp::list
+	<
+		ftmp::list < char , short , int , long > ,
+		ftmp::list < float , double >
+	>
+>::type::value , "" ) ;
+static_assert ( ! ftmp::equal
+<
+	ftmp::break_
+	<
+		ftmp::equal < ftmp::arg < 0 > , long > ,
+		ftmp::list < char , short , int , long , float , double >
+	>::type ,
+	ftmp::list
+	<
+		ftmp::list < char , short , int , long > ,
+		ftmp::list < float , double >
+	>
+>::type::value , "" ) ;
 auto main ( ) -> int { }
