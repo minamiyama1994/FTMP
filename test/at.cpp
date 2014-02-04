@@ -16,4 +16,68 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/at.hpp"
+#include"FTMP/equal.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::at
+	<
+		ftmp::list < char , short , int , long , float , double > ,
+		ftmp::integral < int , 0 >
+	>::type ,
+	char
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::at
+	<
+		ftmp::list < char , short , int , long , float , double > ,
+		ftmp::integral < int , 1 >
+	>::type ,
+	short
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::at
+	<
+		ftmp::list < char , short , int , long , float , double > ,
+		ftmp::integral < int , 2 >
+	>::type ,
+	int
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::at
+	<
+		ftmp::list < char , short , int , long , float , double > ,
+		ftmp::integral < int , 3 >
+	>::type ,
+	long
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::at
+	<
+		ftmp::list < char , short , int , long , float , double > ,
+		ftmp::integral < int , 4 >
+	>::type ,
+	float
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::at
+	<
+		ftmp::list < char , short , int , long , float , double > ,
+		ftmp::integral < int , 5 >
+	>::type ,
+	double
+>::type::value , "" ) ;
+static_assert ( ! ftmp::equal
+<
+	ftmp::at
+	<
+		ftmp::list < char , short , int , long , float , double > ,
+		ftmp::integral < int , 0 >
+	>::type ,
+	double
+>::type::value , "" ) ;
 auto main ( ) -> int { }
