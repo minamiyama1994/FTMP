@@ -88,4 +88,28 @@ static_assert ( ! ftmp::equal
 	>::type ,
 	float
 >::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::case_ < ftmp::list < char , short , int , long > >::of
+	<
+		ftmp::match
+		<
+			ftmp::list < ftmp::pattern < 0 > , short , ftmp::pattern < 1 > , ftmp::pattern < 2 > > ,
+			ftmp::list < ftmp::pattern < 2 > , ftmp::pattern < 1 > , short , ftmp::pattern < 0 > >
+		>
+	>::type ,
+	ftmp::list < long , int , short , char >
+>::type::value , "" ) ;
+static_assert ( ! ftmp::equal
+<
+	ftmp::case_ < ftmp::list < char , short , int , long > >::of
+	<
+		ftmp::match
+		<
+			ftmp::list < ftmp::pattern < 0 > , short , ftmp::pattern < 1 > , ftmp::pattern < 2 > > ,
+			ftmp::list < ftmp::pattern < 2 > , ftmp::pattern < 1 > , short , ftmp::pattern < 0 > >
+		>
+	>::type ,
+	ftmp::list < char , short , int , long >
+>::type::value , "" ) ;
 auto main ( ) -> int { }

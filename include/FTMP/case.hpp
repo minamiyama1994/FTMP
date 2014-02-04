@@ -93,12 +93,19 @@ namespace ftmp
 		template < typename >
 		struct set_length ;
 		template < typename ... l >
-		struct set_length < list < just < l > ... > >
+		struct set_length < list < l ... > >
 			: map
 			<
 				expand_length < arg < 0 > , typename max_length < list < l ... > >::type > ,
 				list < l ... >
 			>
+		{
+		} ;
+		template < typename >
+		struct do_zip ;
+		template < typename ... T >
+		struct do_zip < list < T ... > >
+			: zip < T ... >
 		{
 		} ;
 		template < typename , typename >
@@ -147,15 +154,15 @@ namespace ftmp
 				eval < map
 				<
 					id < concat < arg < 0 > > > ,
-					eval < zip
+					eval < do_zip
 					<
-						set_length
+						eval < set_length
 						<
 							eval < list
 							<
 								typename match_result < T , P >::type ...
 							> >
-						>
+						> >
 					> >
 				> > ,
 				id < nothing >
