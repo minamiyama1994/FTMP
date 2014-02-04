@@ -7,7 +7,7 @@ clean :
 	+rm -rfv *.exe *.o *.d
 	+touch dummy.d
 %.d : %.cpp
-	+$(CXX) -std=c++11 -Wall -Wextra -Werror -I ../include -MD $<
+	+$(CXX) -std=c++11 -Wall -Wextra -Werror -I ../include -M $< > $@
 %.test : %.o
 	+$(CXX) -std=c++11 -Wall -Wextra -Werror -I ../include -o $* $^
 	+./$*
