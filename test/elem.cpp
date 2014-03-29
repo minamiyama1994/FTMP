@@ -16,4 +16,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/elem.hpp"
+static_assert ( ftmp::elem
+<
+	char ,
+	ftmp::list < char , short , int >
+>::type::value , "" ) ;
+static_assert ( ! ftmp::elem
+<
+	float ,
+	ftmp::list < char , short , int >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
