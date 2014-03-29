@@ -16,4 +16,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/drop_while.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::drop_while
+	<
+		ftmp::equal < ftmp::arg < 0 > , float > ,
+		ftmp::list < char , short , int , long , float , double >
+	>::type ,
+	ftmp::list < float , double >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
