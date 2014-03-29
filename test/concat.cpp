@@ -16,4 +16,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/concat.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::concat < ftmp::list < > >::type ,
+	ftmp::list < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat < ftmp::list < ftmp::list < > > >::type ,
+	ftmp::list < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat < ftmp::list < ftmp::list < int > > >::type ,
+	ftmp::list < int >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat < ftmp::list < ftmp::list < int > , ftmp::list < > > >::type ,
+	ftmp::list < int >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat < ftmp::list < ftmp::list < int > , ftmp::list < short > > >::type ,
+	ftmp::list < int , short >
+>::type::value , "" ) ;
 auto main ( ) -> int { }

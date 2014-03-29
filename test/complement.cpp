@@ -31,6 +31,11 @@ static_assert ( ftmp::equal
 	ftmp::complement < ftmp::list < char , short , int > , ftmp::list < char , short , int , double > >::type ,
 	ftmp::list < >
 >::type::value , "" ) ;
+static_assert ( ! ftmp::equal
+<
+	ftmp::complement < ftmp::list < char , short , int > , ftmp::list < char , short , int , double > >::type ,
+	ftmp::list < double >
+>::type::value , "" ) ;
 static_assert ( ftmp::equal
 <
 	ftmp::complement < ftmp::list < char , float , short , int , double > , ftmp::list < char , short , int > >::type ,
