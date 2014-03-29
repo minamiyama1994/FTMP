@@ -16,4 +16,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/equal.hpp"
+static_assert ( ftmp::equal
+<
+	char ,
+	char
+>::type::value , "" ) ;
+static_assert ( ! ftmp::equal
+<
+	char ,
+	int
+>::type::value , "" ) ;
 auto main ( ) -> int { }
