@@ -15,5 +15,21 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include"FTMP/equal.hpp"
 #include"FTMP/composite.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::composite < ftmp::id < ftmp::arg < 0 > > >::apply < int >::type::type ,
+	int
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::composite < ftmp::id < ftmp::arg < 0 > > , ftmp::id < ftmp::arg < 0 > > >::apply < int >::type::type ,
+	int
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::composite < ftmp::list < ftmp::arg < 0 > , ftmp::arg < 0 > > , ftmp::id < ftmp::arg < 0 > > >::apply < int >::type::type ,
+	ftmp::list < int , int >
+>::type::value , "" ) ;
 auto main ( ) -> int { }

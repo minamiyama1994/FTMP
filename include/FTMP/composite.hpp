@@ -32,10 +32,15 @@ namespace ftmp
 		struct apply
 			: lambda < func >::template apply
 			<
-				typename composite < funcs ... >::template apply < T >::type
-			>::type
+				typename composite < funcs ... >::template apply < T >::type::type
+			>
 		{
 		} ;
+	} ;
+	template < typename func >
+	struct composite < func >
+		: lambda < func >
+	{
 	} ;
 }
 #endif
