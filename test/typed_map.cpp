@@ -15,5 +15,5 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include"FTMP/typed_map.hpp"
+#include"FTMP/runtime/typed_map.hpp"
 auto main ( ) -> int { }

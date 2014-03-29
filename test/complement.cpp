@@ -16,4 +16,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/complement.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::complement < ftmp::list < char , short , int > , ftmp::list < char , short , int > >::type ,
+	ftmp::list < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::complement < ftmp::list < char , short , int , double > , ftmp::list < char , short , int > >::type ,
+	ftmp::list < double >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::complement < ftmp::list < char , short , int > , ftmp::list < char , short , int , double > >::type ,
+	ftmp::list < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::complement < ftmp::list < char , float , short , int , double > , ftmp::list < char , short , int > >::type ,
+	ftmp::list < float , double >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
