@@ -15,5 +15,16 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include"FTMP/equal.hpp"
 #include"FTMP/cons.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::cons < char , ftmp::list < > >::type ,
+	ftmp::list < char >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::cons < char , ftmp::list < int > >::type ,
+	ftmp::list < char , int >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
