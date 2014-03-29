@@ -16,4 +16,34 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/delete.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::delete_ < char , ftmp::list < char > >::type ,
+	ftmp::list < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::delete_ < char , ftmp::list < char , int > >::type ,
+	ftmp::list < int >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::delete_ < char , ftmp::list < int > >::type ,
+	ftmp::list < int >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::delete_ < char , ftmp::dict < ftmp::list < char , int > > >::type ,
+	ftmp::dict < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::delete_ < char , ftmp::dict < ftmp::list < short , int > > >::type ,
+	ftmp::dict < ftmp::list < short , int > >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::delete_ < char , ftmp::dict < ftmp::list < char , int > , ftmp::list < short , int > > >::type ,
+	ftmp::dict < ftmp::list < short , int > >
+>::type::value , "" ) ;
 auto main ( ) -> int { }

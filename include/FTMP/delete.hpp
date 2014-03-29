@@ -46,5 +46,14 @@ namespace ftmp
 		>
 	{
 	} ;
+	template < typename v , typename ... l >
+	struct delete_ < v , list < l ... > >
+		: filter
+		<
+			not_ < equal < v , arg < 0 > > > ,
+			list < l ... >
+		>
+	{
+	} ;
 }
 #endif
