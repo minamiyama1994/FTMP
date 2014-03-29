@@ -16,4 +16,44 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/concat_map.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::concat_map < ftmp::list < ftmp::arg < 0 > > , ftmp::list < > >::type ,
+	ftmp::list < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat_map < ftmp::list < ftmp::arg < 0 > > , ftmp::list < > >::type ,
+	ftmp::list < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat_map < ftmp::list < ftmp::arg < 0 > > , ftmp::list < int > >::type ,
+	ftmp::list < int >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat_map < ftmp::list < ftmp::arg < 0 > > , ftmp::list < int , short > >::type ,
+	ftmp::list < int , short >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat_map < ftmp::list < ftmp::arg < 0 > , ftmp::arg < 0 > > , ftmp::list < > >::type ,
+	ftmp::list < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat_map < ftmp::list < ftmp::arg < 0 > , ftmp::arg < 0 > > , ftmp::list < > >::type ,
+	ftmp::list < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat_map < ftmp::list < ftmp::arg < 0 > , ftmp::arg < 0 > > , ftmp::list < int > >::type ,
+	ftmp::list < int , int >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::concat_map < ftmp::list < ftmp::arg < 0 > , ftmp::arg < 0 > > , ftmp::list < int , short > >::type ,
+	ftmp::list < int , int , short , short >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
