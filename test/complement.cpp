@@ -36,4 +36,29 @@ static_assert ( ftmp::equal
 	ftmp::complement < ftmp::list < char , float , short , int , double > , ftmp::list < char , short , int > >::type ,
 	ftmp::list < float , double >
 >::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::complement < ftmp::set < char , short , int > , ftmp::set < char , short , int > >::type ,
+	ftmp::set < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::complement < ftmp::set < char , short , int , double > , ftmp::set < char , short , int > >::type ,
+	ftmp::set < double >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::complement < ftmp::set < char , short , int > , ftmp::set < char , short , int , double > >::type ,
+	ftmp::set < >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::complement < ftmp::set < char , float , short , int , double > , ftmp::set < char , short , int > >::type ,
+	ftmp::set < float , double >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::complement < ftmp::set < char , float , short , int , double > , ftmp::set < char , short , int > >::type ,
+	ftmp::set < double , float >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
