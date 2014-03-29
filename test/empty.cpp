@@ -16,4 +16,28 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/empty.hpp"
+static_assert ( ftmp::empty
+<
+	ftmp::list < >
+>::type::value , "" ) ;
+static_assert ( ! ftmp::empty
+<
+	ftmp::list < char >
+>::type::value , "" ) ;
+static_assert ( ftmp::empty
+<
+	ftmp::set < >
+>::type::value , "" ) ;
+static_assert ( ! ftmp::empty
+<
+	ftmp::set < char >
+>::type::value , "" ) ;
+static_assert ( ftmp::empty
+<
+	ftmp::dict < >
+>::type::value , "" ) ;
+static_assert ( ! ftmp::empty
+<
+	ftmp::dict < ftmp::list < char , char > >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
