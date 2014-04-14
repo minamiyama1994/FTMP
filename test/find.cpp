@@ -16,4 +16,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/find.hpp"
+static_assert ( ftmp::find
+<
+	int ,
+	ftmp::dict < ftmp::list < int , int > >
+>::type::value , "" ) ;
+static_assert ( ! ftmp::find
+<
+	int ,
+	ftmp::dict < ftmp::list < char , int > >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
