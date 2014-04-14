@@ -16,4 +16,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/filter.hpp"
+template < typename >
+struct is_odd ;
+template < typename T , T N >
+struct is_odd < ftmp::integral < T , N > >
+	: ftmp::integral < bool , N % 2 != 0 >
+{
+} ;
+static_assert ( ftmp::equal
+<
+	ftmp::filter < is_odd < ftmp::arg < 0 > > , ftmp::list < ftmp::integral < int , 0 > , ftmp::integral < int , 1 > , ftmp::integral < int , 2 > , ftmp::integral < int , 3 > , ftmp::integral < int , 4 > > >::type ,
+	ftmp::list < ftmp::integral < int , 1 > , ftmp::integral < int , 3 > >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::filter < ftmp::not_ < is_odd < ftmp::arg < 0 > > > , ftmp::list < ftmp::integral < int , 0 > , ftmp::integral < int , 1 > , ftmp::integral < int , 2 > , ftmp::integral < int , 3 > , ftmp::integral < int , 4 > > >::type ,
+	ftmp::list < ftmp::integral < int , 0 > , ftmp::integral < int , 2 > , ftmp::integral < int , 4 > >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::filter < is_odd < ftmp::arg < 0 > > , ftmp::set < ftmp::integral < int , 0 > , ftmp::integral < int , 1 > , ftmp::integral < int , 2 > , ftmp::integral < int , 3 > , ftmp::integral < int , 4 > > >::type ,
+	ftmp::set < ftmp::integral < int , 3 > , ftmp::integral < int , 1 > >
+>::type::value , "" ) ;
+static_assert ( ftmp::equal
+<
+	ftmp::filter < ftmp::not_ < is_odd < ftmp::arg < 0 > > > , ftmp::set < ftmp::integral < int , 0 > , ftmp::integral < int , 1 > , ftmp::integral < int , 2 > , ftmp::integral < int , 3 > , ftmp::integral < int , 4 > > >::type ,
+	ftmp::set < ftmp::integral < int , 2 > , ftmp::integral < int , 0 > , ftmp::integral < int , 4 > >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
