@@ -15,5 +15,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include"FTMP/equal.hpp"
 #include"FTMP/eval.hpp"
+static_assert ( ftmp::equal
+<
+	ftmp::eval < ftmp::list < ftmp::id < int >  ,ftmp::id < double > > >::type ,
+	ftmp::list < int , double >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
