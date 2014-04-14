@@ -15,5 +15,30 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include"FTMP/integral.hpp"
 #include"FTMP/eval_if.hpp"
+static_assert ( ftmp::eval_if
+<
+	ftmp::integral < bool , true > ,
+	ftmp::integral < bool , true > ,
+	ftmp::integral < bool , false >
+>::type::value , "" ) ;
+static_assert ( ! ftmp::eval_if
+<
+	ftmp::integral < bool , true > ,
+	ftmp::integral < bool , false > ,
+	ftmp::integral < bool , true >
+>::type::value , "" ) ;
+static_assert ( ftmp::eval_if
+<
+	ftmp::integral < bool , false > ,
+	ftmp::integral < bool , false > ,
+	ftmp::integral < bool , true >
+>::type::value , "" ) ;
+static_assert ( ! ftmp::eval_if
+<
+	ftmp::integral < bool , false > ,
+	ftmp::integral < bool , true > ,
+	ftmp::integral < bool , false >
+>::type::value , "" ) ;
 auto main ( ) -> int { }
