@@ -16,29 +16,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include"FTMP/integral.hpp"
+#include"FTMP/id.hpp"
 #include"FTMP/eval_if.hpp"
 static_assert ( ftmp::eval_if
 <
 	ftmp::integral < bool , true > ,
-	ftmp::integral < bool , true > ,
-	ftmp::integral < bool , false >
+	ftmp::id < ftmp::integral < bool , true > > ,
+	ftmp::id < ftmp::integral < bool , false > >
 >::type::value , "" ) ;
 static_assert ( ! ftmp::eval_if
 <
 	ftmp::integral < bool , true > ,
-	ftmp::integral < bool , false > ,
-	ftmp::integral < bool , true >
+	ftmp::id < ftmp::integral < bool , false > > ,
+	ftmp::id < ftmp::integral < bool , true > >
 >::type::value , "" ) ;
 static_assert ( ftmp::eval_if
 <
 	ftmp::integral < bool , false > ,
-	ftmp::integral < bool , false > ,
-	ftmp::integral < bool , true >
+	ftmp::id < ftmp::integral < bool , false > > ,
+	ftmp::id < ftmp::integral < bool , true > >
 >::type::value , "" ) ;
 static_assert ( ! ftmp::eval_if
 <
 	ftmp::integral < bool , false > ,
-	ftmp::integral < bool , true > ,
-	ftmp::integral < bool , false >
+	ftmp::id < ftmp::integral < bool , true > > ,
+	ftmp::id < ftmp::integral < bool , false > >
 >::type::value , "" ) ;
 auto main ( ) -> int { }
